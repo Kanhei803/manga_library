@@ -2,22 +2,22 @@
 <title>Adding Manga | Kenhie</title>
 <%- include('../partials/mangaStyles'); %> <%- include('../partials/mangaNav'); %>
 <h1>Add New Manga</h1>
-<form action="" method="get">
+<form action="/mangas" method="post">
   <div>
     <label for="title">Title of Manga:</label>
-    <input type="text" name="title" placeholder="Naruto" id="title" /><br />
+    <input type="text" name="title" placeholder="Naruto" id="title" required="true"/><br />
   </div>
   <div>
     <label for="publicRating">Public Rating:</label>
-    <input type="number" name="publicRating" id="publicRating" placeholder="5" min="1" max="10" step="any" /><br />
+    <input type="number" name="publicRating" id="publicRating" placeholder="5" min="1" max="10" step="any" required="true"/><br />
   </div>
   <div>
     <label for="personalRating">Personal Rating:</label>
-    <input type="number" name="personalRating" id="personalRating" placeholder="5" min="1" max="10" step="any" /><br />
+    <input type="number" name="personalRating" id="personalRating" placeholder="5" min="1" max="10" step="any" required="true"/><br />
   </div>
   <div>
     <label for="volumeCount">Volume Count:</label>
-    <input type="volumeCount" name="volumeCount" id="volumeCount" placeholder="12" min="1" max="200" /><br />
+    <input type="volumeCount" name="volumeCount" id="volumeCount" placeholder="12" min="1" max="200" /><br required="true"/>
   </div>
   <legend>Genre:(Apply as many)</legend>
   <div>
@@ -34,11 +34,11 @@
   </div>
   <div>
     <label for="description">Description:</label><br />
-    <textarea name="description" id="description" cols="30" rows="5" placeholder="What is it about?"></textarea><br />
+    <textarea name="description" id="description" cols="30" rows="5" placeholder="What is it about?" required="true"></textarea><br />
   </div>
   <!-- Confused about this -->
-    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-        <label for="completion">Completed?</label><br>
+    <div class="btn-group" role="group" aria-lab  l="Basic radio toggle button group">
+        <label for="completion">Is the series finished?</label><br>
         <input type="radio" class="btn-check" name="completion" id="true" autocomplete="off" checked>
         <label class="btn btn-outline-secondary" for="true">True</label>
       

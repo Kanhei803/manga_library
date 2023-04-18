@@ -54,6 +54,11 @@ app.get('/mangas/new', (req, res) => {
     res.render('mangas/new')
 })
 
+app.post('/mangas', (req, res) => {
+    console.log(req.body);
+    res.send("Adding your new manga!")
+})
+
 app.get('/mangas/:id', async (req, res) => {
     const { id } = req.params;
     const manga = await MangaModel.findById(id)
