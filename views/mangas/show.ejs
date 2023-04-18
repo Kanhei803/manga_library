@@ -1,0 +1,14 @@
+<%- include('../partials/mangaHeader'); %>
+    <title><%= manga.title %></title>
+<%- include('../partials/mangaStyles'); %>
+<%- include('../partials/mangaNav'); %>
+    <h1><%= manga.title %></h1>
+    <ul>
+      <li>Public Rating: <%= manga.publicRating %></li>
+      <li>Personal Rating: <%= manga.personalRating %></li>
+      <li>Volume Count: <%= manga.volumeCount %></li>
+      <li>Genre: <%= manga.genre %></li>
+      <li>Description: <%= manga.description %></li>
+      <li>Manga Completed: <%= manga.completion %></li>
+    </ul>
+  <%- include('../partials/footer'); %>

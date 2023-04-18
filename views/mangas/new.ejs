@@ -1,0 +1,54 @@
+<%- include('../partials/mangaHeader'); %>
+<title>Adding Manga | Kenhie</title>
+<%- include('../partials/mangaStyles'); %> <%- include('../partials/mangaNav'); %>
+<h1>Add New Manga</h1>
+<form action="" method="get">
+  <div>
+    <label for="title">Title of Manga:</label>
+    <input type="text" name="title" placeholder="Naruto" id="title" /><br />
+  </div>
+  <div>
+    <label for="publicRating">Public Rating:</label>
+    <input type="number" name="publicRating" id="publicRating" placeholder="5" min="1" max="10" step="any" /><br />
+  </div>
+  <div>
+    <label for="personalRating">Personal Rating:</label>
+    <input type="number" name="personalRating" id="personalRating" placeholder="5" min="1" max="10" step="any" /><br />
+  </div>
+  <div>
+    <label for="volumeCount">Volume Count:</label>
+    <input type="volumeCount" name="volumeCount" id="volumeCount" placeholder="12" min="1" max="200" /><br />
+  </div>
+  <legend>Genre:(Apply as many)</legend>
+  <div>
+    <input type="checkbox" id="comedy" name="genre" value="Comedy" />
+    <label for="comedy">Comedy</label>
+    <input type="checkbox" id="romance" name="genre" value="Romance" />
+    <label for="romance">Romance</label>
+    <input type="checkbox" id="shonen" name="genre" value="Shonen" />
+    <label for="shonen">Shonen</label>
+    <input type="checkbox" id="shoujo" name="genre" value="Shoujo" />
+    <label for="shoujo">Shoujo</label>
+    <input type="checkbox" id="sports" name="genre" value="Sports" />
+    <label for="sports">Sports</label>
+  </div>
+  <div>
+    <label for="description">Description:</label><br />
+    <textarea name="description" id="description" cols="30" rows="5" placeholder="What is it about?"></textarea><br />
+  </div>
+  <!-- Confused about this -->
+    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+        <label for="completion">Completed?</label><br>
+        <input type="radio" class="btn-check" name="completion" id="true" autocomplete="off" checked>
+        <label class="btn btn-outline-secondary" for="true">True</label>
+      
+        <input type="radio" class="btn-check" name="completion" id="false" autocomplete="off">
+        <label class="btn btn-outline-secondary" for="false">False</label>
+      </div>
+  </div>
+  <div>
+    <button class="btn btn-outline-success">Submit</button>
+    <a class="btn btn-outline-danger" href="/mangas">Cancel</a>
+  </div>
+</form>
+<%- include('../partials/footer'); %>
