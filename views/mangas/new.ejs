@@ -1,6 +1,7 @@
-<%- include('../partials/mangaHeader'); %>
+<%- include('../partials/header'); %>
 <title>Adding Manga | Kenhie</title>
-<%- include('../partials/mangaStyles'); %> <%- include('../partials/mangaNav'); %>
+<%- include('../partials/styles'); %> 
+<%- include('../partials/nav'); %>
 <h1>Add New Manga</h1>
 <form action="/mangas" method="post">
   <div>
@@ -20,35 +21,83 @@
     <input type="volumeCount" name="volumeCount" id="volumeCount" placeholder="12" min="1" max="200" /><br required="true"/>
   </div>
   <legend>Genre:(Apply as many)</legend>
-  <div>
-    <input type="checkbox" id="comedy" name="genre" value="Comedy" />
-    <label for="comedy">Comedy</label>
-    <input type="checkbox" id="romance" name="genre" value="Romance" />
-    <label for="romance">Romance</label>
-    <input type="checkbox" id="shonen" name="genre" value="Shonen" />
-    <label for="shonen">Shonen</label>
-    <input type="checkbox" id="shoujo" name="genre" value="Shoujo" />
-    <label for="shoujo">Shoujo</label>
-    <input type="checkbox" id="sports" name="genre" value="Sports" />
-    <label for="sports">Sports</label>
-  </div>
-  <div>
+  <!-- <script>
+    $("input:checkbox").click(function() {
+      var bol = $("input:checkbox:checked").length >= 3;     
+      $("input:checkbox").not(":checked").attr("disabled",bol);
+      });
+  </script> -->
+  <script>
+    var limit = 3;
+    $('input.checkbox').on('change', function(genre) {
+      if($(this).siblings(':checked').length >= limit) {
+      this.checked = false;
+      }
+    });
+  </script>
+  <section class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+    <input type="checkbox" class="btn-check" id="action" name="genre" value="Action" />
+    <label class="btn btn-outline-primary" for="action">Action</label>
+    <input type="checkbox" class="btn-check" id="adventure" name="genre" value="Adventure" />
+    <label class="btn btn-outline-primary" for="adventure">Adventure</label>
+    <input type="checkbox" class="btn-check" id="awardwinning" name="genre" value="Award Winning" />
+    <label class="btn btn-outline-primary" for="awardwinning">Award Winning</label>
+    <input type="checkbox" class="btn-check" id="boyslove" name="genre" value="Boys Love" />
+    <label class="btn btn-outline-primary" for="boyslove">Boys Love</label>
+  </section><br>
+  <section class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+    <input type="checkbox" class="btn-check" id="comedy" name="genre" value="Comedy" />
+    <label class="btn btn-outline-primary" for="comedy">Comedy</label>
+    <input type="checkbox" class="btn-check" id="drama" name="genre" value="Drama" />
+    <label class="btn btn-outline-primary" for="drama">Drama</label>
+    <input type="checkbox" class="btn-check" id="fantasy" name="genre" value="Fantasy" />
+    <label class="btn btn-outline-primary" for="fantasy">Fantasy</label>
+    <input type="checkbox" class="btn-check" id="girlslove" name="genre" value="Girls Love" />
+    <label class="btn btn-outline-primary" for="girlslove">Girls Love</label>
+  </section><br>
+  <section class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+    <input type="checkbox" class="btn-check" id="gourmet" name="genre" value="Gourmet" />
+    <label class="btn btn-outline-primary" for="gourmet">Gourmet</label>
+    <input type="checkbox" class="btn-check" id="horror" name="genre" value="Horror" />
+    <label class="btn btn-outline-primary" for="horror">Horror</label>
+    <input type="checkbox" class="btn-check" id="mystery" name="genre" value="Mystery" />
+    <label class="btn btn-outline-primary" for="mystery">Mystery</label>
+    <input type="checkbox" class="btn-check" id="romance" name="genre" value="Romance" />
+    <label class="btn btn-outline-primary" for="romance">Romance</label>
+  </section><br>
+  <section class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+    <input type="checkbox" class="btn-check" id="Sci-Fi" name="genre" value="Sci-Fi" />
+    <label class="btn btn-outline-primary" for="Sci-Fi">Sci-Fi</label>
+    <input type="checkbox" class="btn-check" id="sliceoflife" name="genre" value="Slice of Life" />
+    <label class="btn btn-outline-primary" for="sliceoflife">Slice of Life</label>
+    <input type="checkbox" class="btn-check" id="sports" name="genre" value="Sports" />
+    <label class="btn btn-outline-primary" for="sports">Sports</label>
+    <input type="checkbox" class="btn-check" id="supernatural" name="genre" value="Supernatural" />
+    <label class="btn btn-outline-primary" for="supernatural">Supernatural</label>
+  </section><br>
+  <section class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+    <input type="checkbox" class="btn-check" id="suspense" name="genre" value="Suspense" />
+    <label class="btn btn-outline-primary" for="suspense">Suspense</label>
+  </section>
+  <section>
     <label for="description">Description:</label><br />
     <textarea name="description" id="description" cols="30" rows="5" placeholder="What is it about?" required="true"></textarea><br />
-  </div>
-  <!-- Confused about this -->
-    <div class="btn-group" role="group" aria-lab  l="Basic radio toggle button group">
-        <label for="completion">Is the series finished?</label><br>
-        <input type="radio" class="btn-check" name="completion" id="true" autocomplete="off" checked>
-        <label class="btn btn-outline-secondary" for="true">True</label>
-      
-        <input type="radio" class="btn-check" name="completion" id="false" autocomplete="off">
-        <label class="btn btn-outline-secondary" for="false">False</label>
-      </div>
+  </section>
+  <div>
+    <label  for="completion">Is the series finished?</label>
+    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+      <input type="radio" class="btn-check" name="completion" id="btnradio2" value="false" autocomplete="off" checked>
+      <label class="btn btn-outline-secondary" for="btnradio2">No</label>
+
+      <input type="radio" class="btn-check" name="completion" id="btnradio1" value="true" autocomplete="off">
+      <label class="btn btn-outline-secondary" for="btnradio1">Yes</label>
+    </div>
   </div>
   <div>
     <button class="btn btn-outline-success">Submit</button>
     <a class="btn btn-outline-danger" href="/mangas">Cancel</a>
   </div>
 </form>
+<button onClick="JavaScript:hello()">Click Me</button>
+
 <%- include('../partials/footer'); %>
