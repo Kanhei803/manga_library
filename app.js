@@ -4,7 +4,7 @@ const app = express();
 const MangaModel = require('./models/sample')
 
 // PORT NUMBER
-const PORT = 8008;
+const PORT = 8080;
 
 // MONGOOSE CONNECTION
 const mongoose = require('mongoose');
