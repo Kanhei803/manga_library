@@ -4,7 +4,7 @@ const app = express();
 const MangaModel = require('./models/sample')
 
 // PORT NUMBER
-const PORT = 8080;
+const PORT = 8008;
 
 // MONGOOSE CONNECTION
 const mongoose = require('mongoose');
@@ -46,7 +46,7 @@ app.get('/signup', (req,res) => {
 })
 
 app.get('/mangas', async (req,res) => {
-    const titles = await MangaModel.find({})
+    const titles = await MangaModel.find().sort({title: 1})
     res.render('mangas/index', {titles})
 })
 
@@ -54,9 +54,12 @@ app.get('/mangas/new', (req, res) => {
     res.render('mangas/new')
 })
 
-app.post('/mangas', (req, res) => {
-    console.log(req.body);
-    res.send("Adding your new manga!")
+app.post('/mangas', async(req, res) => {
+    const newManga = new MangaModel(req.body);
+    console.log(newManga)
+    res.send("Yay")
+    // await newManga.save()
+    // res.redirect("/mangas")
 })
 
 app.get('/mangas/:id', async (req, res) => {
@@ -64,6 +67,13 @@ app.get('/mangas/:id', async (req, res) => {
     const manga = await MangaModel.findById(id)
     res.render('mangas/show', { manga })
 })
+
+app.get('/mangas/update/:id', async (req, res) => {
+    const { id } = req.params;
+    const manga = await MangaModel.findById(id);
+    res.render('mangas/update', { manga })
+})
+
 
 app.listen(PORT, () => {
     console.log(`Manga App listening on port ${PORT}`)

@@ -9,6 +9,8 @@
       <li>Volume Count: <%= manga.volumeCount %></li>
       <li>Genre: <%= manga.genre %></li>
       <li>Description: <%= manga.description %></li>
-      <li>Manga Completed: <%= manga.completion %></li>
+      <li>Manga Completed: <%= manga.completion ? "It's Complete" : "Still running" %></li>
     </ul>
+    <a href="/mangas/update/<%= manga.id %>">Edit</a>
   <%- include('../partials/footer'); %>
+
