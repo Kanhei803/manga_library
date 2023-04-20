@@ -1,24 +1,24 @@
 <%- include('../partials/header'); %>
-<title>Updating <%= %> | Kenhie</title>
+<title>Updating <%= manga.title %> | Kenhie</title>
 <%- include('../partials/styles'); %> 
 <%- include('../partials/nav'); %>
-<h1>Add New Manga</h1>
+<h1>Update <%= manga.title %></h1>
 <form action="/mangas" method="post">
   <div>
     <label for="title">Title of Manga:</label>
-    <input type="text" name="title" placeholder="Naruto" id="title" required="true"/><br />
+    <input type="text" name="title" placeholder="<%= manga.title %>" id="title" required="true"><br />
   </div>
   <div>
     <label for="publicRating">Public Rating:</label>
-    <input type="number" name="publicRating" id="publicRating" placeholder="5" min="1" max="10" step="any" required="true"/><br />
+    <input type="number" name="publicRating" id="publicRating" placeholder="<%= manga.publicRating %>" min="1" max="10" step="any" required="true"/><br />
   </div>
   <div>
     <label for="personalRating">Personal Rating:</label>
-    <input type="number" name="personalRating" id="personalRating" placeholder="5" min="1" max="10" step="any" required="true"/><br />
+    <input type="number" name="personalRating" id="personalRating" placeholder="<%= manga.personalRating %>" min="1" max="10" step="any" required="true"/><br />
   </div>
   <div>
     <label for="volumeCount">Volume Count:</label>
-    <input type="volumeCount" name="volumeCount" id="volumeCount" placeholder="12" min="1" max="200" /><br required="true"/>
+    <input type="number" name="volumeCount" id="volumeCount" placeholder="<%= manga.volumeCount %>" min="1" max="200" /><br required="true"/>
   </div>
   <legend>Genre:(Apply as many)</legend>
   <!-- <script>
@@ -81,7 +81,7 @@
   </section>
   <section>
     <label for="description">Description:</label><br />
-    <textarea name="description" id="description" cols="30" rows="5" placeholder="What is it about?" required="true"></textarea><br />
+    <textarea name="description" id="description" cols="75" rows="15" placeholder="<%= manga.description %>" required="true"><%= manga.description %></textarea><br />
   </section>
   <div>
     <label  for="completion">Is the series finished?</label>

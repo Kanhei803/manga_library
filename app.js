@@ -69,11 +69,12 @@ app.get('/mangas/:id', async (req, res) => {
     res.render('mangas/show', { manga })
 })
 
-// app.post('/mangas/update/:id', async (req, res) => {
-//     const { id } = req.params;
-//     const manga = await MangaModel.findById(id)
-//     res.render('mangas/update')
-// })
+app.get('/mangas/update/:id', async (req, res) => {
+    const { id } = req.params;
+    const manga = await MangaModel.findById(id);
+    res.render('mangas/update', { manga })
+})
+
 
 app.listen(PORT, () => {
     console.log(`Manga App listening on port ${PORT}`)
