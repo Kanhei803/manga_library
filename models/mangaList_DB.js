@@ -1,19 +1,21 @@
-// SCHEMA
-// mangaMode.englishTitle = ""
-// mangaModel.japaneseTitle = ""
-// mangaMode.romanjiTitle = ""
-// mangaModel.publicRating =
-// mangaMode.personalRating = 
-// mangaModel.volumeCount =
-// mangaMode.genre = []
-// mangaModel.theme = []
-// mangaModel.demographic = []
-// mangaModel.authorStory = ""
-// mangaModel.authorArtist = ""
-// mangaModel.description = ``
-// mangaModel.releaseDate = ""
-// mangaModel.finishedDate = ""
-// mangaModel.completion = 
+// ADD NEW ENTRY TO JSON
+{
+    "englishTitle": "", 
+    "japaneseTitle": "",
+    "romanjiTitle": "",
+    "publicRating": ,
+    "personalRating": ,
+    "volumeCount": 11,
+    "genre": [""],
+    "theme": [""],
+    "demographic": [""],
+    "authorStory": "",
+    "authorArtist": "",
+    "description": "",
+    "releaseDate": "",
+    "finishedDate": "",
+    "completion": 
+}
 
 // Spy x Family
 mangaModel.englishTitle = "Spy x Family"
@@ -84,7 +86,7 @@ mangaModel.releaseDate = "May 23, 2015"
 mangaModel.finishedDate = ""
 mangaModel.completion = false
 
-// Kubo-san wa Mob wo Yurusanai
+Kubo-san wa Mob wo Yurusanai
 mangaModel.englishTitle = "Kubo Won't Let Me Be Invisible"
 mangaModel.japaneseTitle = "久保さんは僕を許さない"
 mangaModel.romanjiTitle = "Kubo-san wa Mob wo Yurusanai"
@@ -105,8 +107,8 @@ mangaModel.releaseDate = "Oct 24, 2019"
 mangaModel.finishedDate = "Mar 2, 2023"
 mangaModel.completion = true
 
-// Yakitate!! Japan
-mangaModel.englishTitle = ""
+Yakitate!! Japan
+mangaModel.englishTitle = "Yakitate!! Japan!"
 mangaModel.japaneseTitle = "焼きたて!! ジャぱん"
 mangaModel.romanjiTitle = "Yakitate!! Japan"
 mangaModel.publicRating = 7.56
@@ -124,7 +126,7 @@ mangaModel.releaseDate = "Mar 18, 2002"
 mangaModel.finishedDate = "Jan 10, 2007"
 mangaModel.completion = true
 
-// Ichido dake demo, Koukai Shitemasu
+Ichido dake demo, Koukai Shitemasu
 mangaModel.englishTitle = "I Can't Believe I Slept With You!"
 mangaModel.japaneseTitle = "一度だけでも、後悔してます"
 mangaModel.romanjiTitle = "Ichido dake demo, Koukai Shitemasu"
@@ -145,8 +147,8 @@ mangaModel.releaseDate = "Jun 27, 2019"
 mangaModel.finishedDate = "Feb 26, 2021"
 mangaModel.completion = true
 
-// Sakamoto Days
-mangaModel.englishTitle = ""
+Sakamoto Days
+mangaModel.englishTitle = "Sakamoto Days"
 mangaModel.japaneseTitle = "サカモトデイズ"
 mangaModel.romanjiTitle = "Sakamoto Days"
 mangaModel.publicRating = 7.97
@@ -166,7 +168,7 @@ mangaModel.releaseDate = "Nov 21, 2020"
 mangaModel.finishedDate = ""
 mangaModel.completion = false
 
-// Sono Bisque Doll wa Koi wo Suru
+Sono Bisque Doll wa Koi wo Suru
 mangaModel.englishTitle = "My Dress-Up Darling"
 mangaModel.japaneseTitle = "その着せ替え人形〈ビスク・ドール〉は恋をする"
 mangaModel.romanjiTitle = "Sono Bisque Doll wa Koi wo Suru"
@@ -189,7 +191,7 @@ mangaModel.releaseDate = "Jan 19, 2018"
 mangaModel.finishedDate = ""
 mangaModel.completion = false
 
-// Komi-san wa, Comyushou desu
+Komi-san wa, Comyushou desu
 mangaModel.englishTitle = "Komi Can't Communicate"
 mangaModel.japaneseTitle = "古見さんは、コミュ症です"
 mangaModel.romanjiTitle = "Komi-san wa, Comyushou desu"
@@ -210,7 +212,7 @@ mangaModel.releaseDate = "May 18, 2016"
 mangaModel.finishedDate = ""
 mangaModel.completion = false
 
-// Ore Monogatari!!
+Ore Monogatari!!
 mangaModel.englishTitle = "My Love Story!!"
 mangaModel.japaneseTitle = "俺物語!!"
 mangaModel.romanjiTitle = "Ore Monogatari!!"
@@ -231,7 +233,7 @@ mangaModel.releaseDate = "Dec 13, 2011"
 mangaModel.finishedDate = "Jul 13, 2016"
 mangaModel.completion = true 
 
-// Yakumo-san wa Ezuke ga Shitai
+Yakumo-san wa Ezuke ga Shitai
 mangaModel.englishTitle = "Beauty and the Feast"
 mangaModel.japaneseTitle = "八雲さんは餌づけがしたい"
 mangaModel.romanjiTitle = "Yakumo-san wa Ezuke ga Shitai"

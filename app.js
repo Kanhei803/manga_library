@@ -47,7 +47,7 @@ app.get('/signup', (req,res) => {
 })
 
 app.get('/mangas', async (req,res) => {
-    const titles = await MangaModel.find()
+    const titles = await MangaModel.find().sort({romanjiTitle: 1})
     res.render('mangas/index', { titles })
 })
 
@@ -71,7 +71,7 @@ app.get('/mangas/:id', async (req, res) => {
 
 app.get('/mangas/update/:id', async (req, res) => {
     const { id } = req.params;
-    const manga = await MangaModel.findById();
+    const manga = await MangaModel.findById(id);
     res.render('mangas/update', { manga })
 })
 

@@ -3,14 +3,15 @@
 <%- include('../partials/styles'); %>
 <%- include('../partials/nav'); %>
     <h1><%= manga.romanjiTitle %></h1>
+    <h2><%= manga.englishTitle %></h2>
     <ul>
       <li>Public Rating: <%= manga.publicRating %></li>
       <li>Personal Rating: <%= manga.personalRating %></li>
       <li>Volume Count: <%= manga.volumeCount %></li>
       <li>Genre: <%= manga.genre %></li>
-      <li>Description: <%= manga.description %></li>
       <li>Manga Completed: <%= manga.completion ? "It's Complete" : "Still running" %></li>
     </ul>
+    <p>Description: <%= manga.description %></p>
     <a href="/mangas/update/<%= manga.id %>">Edit</a>
   <%- include('../partials/footer'); %>
 
