@@ -2,8 +2,9 @@
     <title><%= manga.romanjiTitle %></title>
 <%- include('../partials/styles'); %>
 <%- include('../partials/nav'); %>
-    <h1><%= manga.romanjiTitle %></h1>
-    <h2><%= manga.englishTitle %></h2>
+    <h1><%= manga.englishTitle %></h1>
+    <h4><%= manga.romanjiTitle %></h4>
+    <h4><%= manga.japaneseTitle %></h4>
     <ul>
       <li>Public Rating: <%= manga.publicRating %></li>
       <li>Personal Rating: <%= manga.personalRating %></li>

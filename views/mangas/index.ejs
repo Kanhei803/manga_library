@@ -5,7 +5,7 @@
       <h1>All Manga</h1>
       <ul>
         <% for(let title of titles) { %>
-        <li><a href="/mangas/<%= title.id %>"><%= title.romanjiTitle %></a></li>
+        <li><a href="/mangas/<%= title.id %>"><%= title.englishTitle %></a></li>
         <% } %>
       </ul>
 <%- include('../partials/footer'); %>

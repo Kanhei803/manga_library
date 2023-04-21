@@ -34,49 +34,70 @@ app.get('/', (req, res) => {
     res.render('index')
 })
 
+// ABOUT PAGE
 app.get('/about', (req,res) => {
     res.render('about')
 })
 
+// LOGIN PAGE
 app.get('/login', (req,res) => {
     res.render('login')
 })
 
+// SIGN UP PAGE
 app.get('/signup', (req,res) => {
     res.render('signup')
 })
 
+// ALL MANGA LIST PAGE
 app.get('/mangas', async (req,res) => {
-    const titles = await MangaModel.find().sort({romanjiTitle: 1})
+    const titles = await MangaModel.find().sort({englishTitle: 1})
     res.render('mangas/index', { titles })
 })
 
-app.get('/mangas/new', (req, res) => {
-    res.render('mangas/new')
-})
-
-app.post('/mangas', async(req, res) => {
-    const newManga = new MangaList(req.body);
-    console.log(newManga)
-    res.send("Yay")
-    await newManga.save()
-    res.redirect("/mangas")
-})
-
-app.get('/mangas/:id', async (req, res) => {
+// ADD NEW MANGA PAGE
+app.get('/mangas/new', async (req, res) => {
     const { id } = req.params;
-    const manga = await MangaModel.findById(id)
-    res.render('mangas/show', { manga })
+    const manga = await MangaModel.find(id);
+    res.render('mangas/new', { manga })
 })
 
+// POST NEW MANGA INTO DB
+app.post('/mangas', async (req, res) => {
+    const SaveManga = new MangaModel(req.body)
+    await SaveManga.save() 
+    .then(() => {
+        console.log("It worked!");
+    }) 
+    .catch((err) => {
+        console.log(err)
+    })
+    res.redirect('/mangas/index')
+})
+
+// INDIVIDUAL MANGA UPDATE PAGE
 app.get('/mangas/update/:id', async (req, res) => {
     const { id } = req.params;
     const manga = await MangaModel.findById(id);
     res.render('mangas/update', { manga })
 })
 
+// POST UPDATES TO MANGA 
+app.post('/mangas/update/:id', async (req, res) => {
+        // const { id } = req.params;
+        // const manga = await MangaModel.findById(id)
+        // res.render('mangas/update')
+    })
+
+// SPECIFIC MANGA PAGE
+app.get('/mangas/:id', async (req, res) => {
+    const { id } = req.params;
+    const manga = await MangaModel.findById(id)
+    res.render('mangas/show', { manga })
+})
+
+// USE JSON DATABASE TO REUPLOAD INTO MONGO ATLAS DB
 app.get('/inserted', async (req, res) => {
-    // await (MangaModel.insertMany(mangaData.mangas[2]))
     for (let i = 0; i < mangaData.mangas.length; i++){
         await (MangaModel.insertMany(mangaData.mangas[i]))
         .then(() => {
@@ -89,7 +110,7 @@ app.get('/inserted', async (req, res) => {
     res.redirect('mangas')
 })
 
-
+// PORT LISTEN
 app.listen(PORT, () => {
     console.log(`Manga App listening on port ${PORT}`)
 })
