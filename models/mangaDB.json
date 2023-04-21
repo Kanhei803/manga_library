@@ -1,0 +1,72 @@
+{
+    "mangas": [
+        {
+            "englishTitle": "Spy x Family", 
+            "japaneseTitle": "スパイファミリー",
+            "romanjiTitle": "SPYxFAMILY",
+            "publicRating": 8.61,
+            "personalRating": 9.00,
+            "volumeCount": 11,
+            "genre": ["Action", "Comedy"],
+            "theme": ["Childcare"],
+            "demographic": ["Shounen"],
+            "authorStory": "Endou, Tatsuya",
+            "authorArtist": "",
+            "description": "For the agent known as \"Twilight,\" no order is too tall if it is for the sake of peace. Operating as Westalis' master spy, Twilight works tirelessly to prevent extremists from sparking a war with neighboring country Ostania. For his latest mission, he must investigate Ostanian politician Donovan Desmond by infiltrating his son's school: the prestigious Eden Academy. Thus, the agent faces the most difficult task of his career: get married, have a child, and play family.\n\r\nTwilight, or \"Loid Forger\", quickly adopts the unassuming orphan Anya to play the role of a six-year-old daughter and prospective Eden Academy student. For a wife, he comes across Yor Briar, an absent-minded office worker who needs a pretend partner of her own to impress her friends. However, Loid is not the only one with a hidden nature. Yor moonlights as the lethal assassin \"Thorn Princess.\" For her, marrying Loid creates the perfect cover. Meanwhile, Anya is not the ordinary girl she appears to be; she is an esper, the product of secret experiments that allow her to read minds. Although she uncovers their true identities, Anya is thrilled that her new parents are cool secret agents! She would never tell them, of course. That would ruin the fun.\n\r\nUnder the guise of \"The Forgers\", the spy, the assassin, and the esper must act as a family while carrying out their own agendas. Although these liars and misfits are only playing parts, they soon find that family is about far more than blood relations.\n\r\n(Source: Written by MAL Rewrite)",
+            "releaseDate": "Mar 25, 2019",
+            "finishedDate": "",
+            "completion": false
+        },
+        {
+            "englishTitle": "Haikyu!!", 
+            "japaneseTitle": "ハイキュー!!",
+            "romanjiTitle": "Haikyuu!!",
+            "publicRating": 8.85,
+            "personalRating": 9.50,
+            "volumeCount": 45,
+            "genre": ["Award Winning", "Sports"],
+            "theme": ["School", "Team Sports"],
+            "demographic": ["Shounen"],
+            "authorStory": "Furudate, Haruichi",
+            "authorArtist": "",
+            "description": "The whistle blows. The ball is up. A dig. A set. A spike.\n\r\nVolleyball. A sport where two teams face off, separated by a formidable, wall-like net.\n\r\nThe \"Little Giant\", standing at only 170 cm, overcomes the towering net and the wall of blockers. The awe-inspired Shouyou Hinata looks on at the ace's crow-like figure. Determined to reach great heights like the Little Giant, small-statured Hinata finally manages to form a team in his last year of junior high school, and enters his first volleyball tournament. However, his team is utterly defeated in their first game against the powerhouse school Kitagawa Daiichi, led by the genius, but oppressive setter dubbed the \"King of the Court\", Tobio Kageyama.\n\r\nHinata enrolls into Karasuno High School seeking to take revenge against Kageyama in an official high school match and to follow in the Little Giant's footsteps—but his plans are ruined when he opens the gymnasium door to find Kageyama as one of his teammates.\n\r\nNow, Hinata must establish himself on the team and work alongside the problematic Kageyama to overcome his shortcomings and to fulfill his dream of making it to the top of the high school volleyball world.\n\r\n(Source: Written by MAL Rewrite)",
+            "releaseDate": "Feb 20, 2012",
+            "finishedDate": "Jul 20, 2020",
+            "completion": true 
+        },
+        {
+            "englishTitle": "Laid-Back Camp", 
+            "japaneseTitle": "ゆるキャン△",
+            "romanjiTitle": "Yuru Camp△",
+            "publicRating": 8.40,
+            "personalRating": 9.75,
+            "volumeCount": 14,
+            "genre": ["Slice of Life"],
+            "theme": ["CGDCT", "Iyashikei"],
+            "demographic": [],
+            "authorStory": "Afro",
+            "authorArtist": "",
+            "description": "Setting up a tent, starting a fire, and eating noodles with Mt. Fuji in view...Rin and Nadeshiko absolutely love to camp! Enjoy their zest for travel and maybe even pick up a tip or two about roughing it in the great outdoors. You might just want to go camping yourself!\n\r\n(Source: Yen Press)",
+            "releaseDate": "May 23, 2015",
+            "finishedDate": "",
+            "completion": false
+        },
+        {
+            "englishTitle": "Laid-Back Camp", 
+            "japaneseTitle": "ゆるキャン△",
+            "romanjiTitle": "Yuru Camp△",
+            "publicRating": 8.40,
+            "personalRating": 9.75,
+            "volumeCount": 14,
+            "genre": ["Slice of Life"],
+            "theme": ["CGDCT", "Iyashikei"],
+            "demographic": [],
+            "authorStory": "Afro",
+            "authorArtist": "",
+            "description": "Setting up a tent, starting a fire, and eating noodles with Mt. Fuji in view...Rin and Nadeshiko absolutely love to camp! Enjoy their zest for travel and maybe even pick up a tip or two about roughing it in the great outdoors. You might just want to go camping yourself!\n\r\n(Source: Yen Press)",
+            "releaseDate": "May 23, 2015",
+            "finishedDate": "",
+            "completion": false
+        }
+    ]
+}

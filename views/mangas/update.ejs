@@ -1,11 +1,11 @@
 <%- include('../partials/header'); %>
-<title>Updating <%= manga.title %> | Kenhie</title>
+<title>Updating <%= manga.romanjiTitle%> | Kenhie</title>
 <%- include('../partials/styles'); %> <%- include('../partials/nav'); %>
 <h1>Update <%= manga.title %></h1>
 <form action="/mangas" method="post">
   <div>
     <label for="title">Title of Manga:</label>
-    <input type="text" name="title" placeholder="<%= manga.title %>" id="title" required="true" /><br />
+    <input type="text" name="title" placeholder="<%= manga.englishTitle %>" id="title" required="true" /><br />
   </div>
   <div>
     <label for="publicRating">Public Rating:</label>

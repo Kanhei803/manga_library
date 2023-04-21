@@ -1,12 +1,11 @@
-<%- include('../partials/mangaHeader'); %>
+<%- include('../partials/header'); %>
     <title>All Manga | Kenhie</title>
-<%- include('../partials/mangaStyles'); %>
-<%- include('../partials/mangaNav'); %>
+<%- include('../partials/styles'); %>
+<%- include('../partials/nav'); %>
       <h1>All Manga</h1>
       <ul>
         <% for(let title of titles) { %>
-        <li><a href="/mangas/<%= title.id %>"><%= title.title %></a></li>
+        <li><a href="/mangas/<%= title.id %>"><%= title.romanjiTitle %></a></li>
         <% } %>
       </ul>
-      <%- include('../partials/footer'); %>
-
+<%- include('../partials/footer'); %>

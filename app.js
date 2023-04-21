@@ -1,7 +1,8 @@
 // IMPORT MODULES
 const express = require('express');
 const app = express();
-const MangaModel = require('./models/sample')
+const MangaModel = require('./models/mangaSchema');
+const mangaData = require('./models/mangaDB.json')
 
 // PORT NUMBER
 const PORT = 8080;
@@ -46,8 +47,8 @@ app.get('/signup', (req,res) => {
 })
 
 app.get('/mangas', async (req,res) => {
-    const titles = await MangaModel.find().sort({title: 1})
-    res.render('mangas/index', {titles})
+    const titles = await MangaModel.find()
+    res.render('mangas/index', { titles })
 })
 
 app.get('/mangas/new', (req, res) => {
@@ -55,11 +56,11 @@ app.get('/mangas/new', (req, res) => {
 })
 
 app.post('/mangas', async(req, res) => {
-    const newManga = new MangaModel(req.body);
+    const newManga = new MangaList(req.body);
     console.log(newManga)
     res.send("Yay")
-    // await newManga.save()
-    // res.redirect("/mangas")
+    await newManga.save()
+    res.redirect("/mangas")
 })
 
 app.get('/mangas/:id', async (req, res) => {
@@ -70,8 +71,22 @@ app.get('/mangas/:id', async (req, res) => {
 
 app.get('/mangas/update/:id', async (req, res) => {
     const { id } = req.params;
-    const manga = await MangaModel.findById(id);
+    const manga = await MangaModel.findById();
     res.render('mangas/update', { manga })
+})
+
+app.get('/inserted', async (req, res) => {
+    // await (MangaModel.insertMany(mangaData.mangas[2]))
+    for (let i = 0; i < mangaData.mangas.length; i++){
+        await (MangaModel.insertMany(mangaData.mangas[i]))
+        .then(() => {
+            console.log("It worked!");
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+    }
+    res.redirect('mangas')
 })
 
 
