@@ -2,19 +2,20 @@
 const express = require('express');
 const app = express();
 const MangaModel = require('./models/mangaSchema');
-const mangaData = require('./models/mangaDB.json')
+const mangaData = require('./models/mangaDB.json');
+const UserModel = require('./models/userSchema');
 
 // PORT NUMBER
-const PORT = 8080;
+const PORT = 8008;
 
 // MONGOOSE CONNECTION
 const mongoose = require('mongoose');
 const dbUrl = "mongodb+srv://Kenhie_Manga:Yuru1camp2is3the4best5@mangaapp.87cpygr.mongodb.net/manga_db";
 const connectionParams = {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
 };
-
+    
 mongoose.connect(dbUrl, connectionParams)
 .then(() => {
     console.log("Connected to the MangaDB");
@@ -49,17 +50,22 @@ app.get('/signup', (req,res) => {
     res.render('signup')
 })
 
+app.post('/signup', async (req, res) => {
+    const NewUser = new UserModel(req.body)
+    await NewUser.save()
+    .then(() => {
+        console.log("User as been saved into DB!");
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+    res.send("It worked?")
+})
+
 // ALL MANGA LIST PAGE
 app.get('/mangas', async (req,res) => {
     const titles = await MangaModel.find().sort({englishTitle: 1})
     res.render('mangas/index', { titles })
-})
-
-// ADD NEW MANGA PAGE
-app.get('/mangas/new', async (req, res) => {
-    const { id } = req.params;
-    const manga = await MangaModel.find(id);
-    res.render('mangas/new', { manga })
 })
 
 // POST NEW MANGA INTO DB
@@ -72,7 +78,14 @@ app.post('/mangas', async (req, res) => {
     .catch((err) => {
         console.log(err)
     })
-    res.redirect('/mangas/index')
+    res.redirect('mangas')
+})
+
+// ADD NEW MANGA PAGE
+app.get('/mangas/new', async (req, res) => {
+    const { id } = req.params;
+    const manga = await MangaModel.find(id);
+    res.render('mangas/new', { manga })
 })
 
 // INDIVIDUAL MANGA UPDATE PAGE
