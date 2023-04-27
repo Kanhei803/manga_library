@@ -1,8 +1,73 @@
+@font-face {
+    font-family: Passion One;
+    src: url(/public/fonts/PassionOne-Regular.ttf);
+    font-family: NotoSerifJP;
+    src: url(/public/fonts/NotoSerifJP-Medium.otf);
+}
+
+h2 {
+    font-family: Passion One;
+}
+
+h4 {
+    font-family: Passion One;
+}
+
+span {
+    font-weight: 500;
+    font-size: small;
+    
+}
+
 #nav {
     background-color: #B9F3FC;
+    padding: 5px 0 10px;
+}
+
+#footer {
+    background-color:#B9F3FC;
+    padding: 10px 0 10px;
+}
+
+#btnSubmit {
+    padding: 30px;
+}
+
+.form-control {
+    font-family: NotoSerifJP;
+}
+
+.btnList:hover {
+    color: white !important;
+    background-color: lightskyblue !important;
+    border-color: black !important;
 }
 
 .navText {
     text-transform: uppercase;
     font-weight: bold;
 }
+
+.shortText {
+    overflow: hidden;
+    display: -webkit-box;
+   -webkit-line-clamp: 10; /* number of lines to show */
+   -webkit-box-orient: vertical;
+}
+
+.shortFilter {
+    overflow: hidden;
+    display: -webkit-box;
+   -webkit-line-clamp: 1; /* number of lines to show */
+   -webkit-box-orient: vertical;
+}
+
+.filterBtn {
+    size: .5rem;
+}
+
+
+
+
+
+

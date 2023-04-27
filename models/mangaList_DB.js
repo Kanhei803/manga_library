@@ -3,6 +3,7 @@
     "englishTitle": "", 
     "japaneseTitle": "",
     "romanjiTitle": "",
+    "img": "",
     "publicRating": ,
     "personalRating": ,
     "volumeCount": 11,

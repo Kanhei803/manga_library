@@ -8,22 +8,22 @@
 
 <!-- NAVIGATION PARTIAL -->
 <%- include('partials/nav'); %>
-<form action="" method="get">
+<form action="/signup" method="post">
   <div class="col col-6 col-md text-center">
     <div>
       <label for="username">Display name: </label>
-      <input type="text" name="username" id="username" />
+      <input type="text" name="username" id="username">
     </div>
     <div>
       <label for="email">Email: </label>
-      <input type="email" name="email" id="email" />
+      <input type="email" name="email" id="email">
     </div>
     <div>
       <label for="password">Password: </label>
-      <input type="password" name="password" id="password" />
+      <input type="password" name="password" id="password">
     </div>
     <div>
-      <input type="checkbox" value="checkbox" />
+      <input type="checkbox" value="checkbox" checked>
       <label for="checkbox">Opt-in to be added into news-letter</label>
     </div>
     <button>Sign Up</button>

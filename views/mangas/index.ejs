@@ -2,10 +2,67 @@
     <title>All Manga | Kenhie</title>
 <%- include('../partials/styles'); %>
 <%- include('../partials/nav'); %>
-      <h1>All Manga</h1>
-      <ul>
-        <% for(let title of titles) { %>
-        <li><a href="/mangas/<%= title.id %>"><%= title.englishTitle %></a></li>
-        <% } %>
-      </ul>
+<div class="container">
+  <h2>All Manga</h2>
+</div> 
+<div class="container text-center">
+  <div class="row align-items-start">
+    <% for(let title of titles) { %>
+      <div class="col-4">
+        <div class="container text-center pb-4">
+          <div class="row border border-warning rounded-2">
+            <h4><a href="/mangas/<%= title.id %>"><%= title.englishTitle %></a></h4>
+            <div class="container">
+              <div class="row">
+                <div class="col-4">
+                  <span>Released Date:</span><br>
+                  <span><%= title.releaseDate %></span>
+                </div>
+                <div class="col-4">
+                  <span>Completion?</span><br>
+                  <span style="text-transform: uppercase"><%= title.completion %></span>
+                </div>
+                <div class="col-4">
+                  <span>Current Volume:</span><br>
+                  <span><%= title.volumeCount %></span>
+                </div>
+              </div>
+            </div>
+            <div class="container">
+              <div class="row">
+                <div class="col shortFilter ">
+                  <% for (let i = 0; i < title.genre.length; i++) { %>
+                  <button class="filterBtn btn btn-sm border border-info rounded-2" ><%= title.genre[i] %></button>
+                  <% } %>               
+                  <% for (let i = 0; i < title.theme.length; i++) { %>
+                  <button class="filterBtn btn btn-sm border border-info rounded-2"><%= title.theme[i] %></button>
+                  <% } %>          
+                  <% for (let i = 0; i < title.demographic.length; i++) { %>
+                  <button class="filterBtn btn btn-sm border border-info rounded-2"><%= title.demographic[i] %></button>
+                  <% } %>
+                </div>
+              </div>
+            </div>
+            <div class="container">
+              <div class="row">
+                <div class="col-6">
+                  <img style="width: 200px; height: 300px" src="imgs/manga/<%= title.englishTitle %>.jpg" alt="">
+                </div>
+                <div class="col-6">
+                  <p class="shortText"><%= title.description %></p>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="col-6">
+              <img style="width: 200px" src="imgs/manga/<%= title.englishTitle %>.jpg" alt="">
+            </div>
+            <div class="col-6">
+              <p class="shortText"><%= title.description %></p>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    <% } %>
+  </div>
+</div>
 <%- include('../partials/footer'); %>

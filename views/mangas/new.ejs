@@ -2,260 +2,115 @@
 <title>Adding Manga | Kenhie</title>
 <%- include('../partials/styles'); %> 
 <%- include('../partials/nav'); %>
-<h1>Add New Manga</h1>
-<form action="/mangas" method="post" id="newManga">
-  <div>
-    <label for="englishTitle">English Title of Manga: </label>
-    <input type="text" name="englishTitle" id="englishTitle" placeholder="<%= manga.englishTitle %>" required="true"><br>
+  <div class="container">
+    <h2 class="pageTitle mb-3">Add New Manga</h1>
   </div>
-  <div>
-    <label for="japaneseTitle">Japanese Title of Manga: </label>
-    <input type="text" name="japaneseTitle" id="japaneseTitle" placeholder="<%= manga.japaneseTitle %>" required="true"><br>
-  </div>
-  <div>
-    <label for="romanjiTitle">Romanji Title of Manga: </label>
-    <input type="text" name="romanjiTitle" id="englishTitle" placeholder="<%= manga.romanjiTitle %>" required="true"><br>
-  </div>
-  <div>
-    <label for="publicRating">Public Rating: </label>
-    <input type="number" name="publicRating" id="publicRating" placeholder="5" min="1" max="10" step="any" required="true"><br>
-  </div>
-  <div>
-    <label for="personalRating">Personal Rating: </label>
-    <input type="number" name="personalRating" id="personalRating" placeholder="5" min="1" max="10" step="any" required="true"><br>
-  </div>
-  <div>
-    <label for="volumeCount">Volume Count: </label>
-    <input type="number" name="volumeCount" id="volumeCount" placeholder="12" min="1" max="200" /><br required="true">
-  </div>
-  <legend>Genre: (Apply as many)</legend>
-  </script>
-  <section class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-    <input type="checkbox" class="btn-check" id="action" name="genre" value="Action">
-    <label class="btn btn-outline-primary" for="action">Action</label>
-    <input type="checkbox" class="btn-check" id="adventure" name="genre" value="Adventure">
-    <label class="btn btn-outline-primary" for="adventure">Adventure</label>
-    <input type="checkbox" class="btn-check" id="award_winning" name="genre" value="Award Winning">
-    <label class="btn btn-outline-primary" for="award_winning">Award Winning</label>
-    <input type="checkbox" class="btn-check" id="comedy" name="genre" value="Comedy">
-    <label class="btn btn-outline-primary" for="comedy">Comedy</label>
-  </section><br>
-  <section class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-    <input type="checkbox" class="btn-check" id="coming_of_age" name="genre" value="Coming of Age">
-    <label class="btn btn-outline-primary" for="coming_of_age">Coming of Age</label>
-    <input type="checkbox" class="btn-check" id="drama" name="genre" value="Drama">
-    <label class="btn btn-outline-primary" for="drama">Drama</label>
-    <input type="checkbox" class="btn-check" id="fantasy" name="genre" value="Fantasy">
-    <label class="btn btn-outline-primary" for="fantasy">Fantasy</label>
-    <input type="checkbox" class="btn-check" id="gourmet" name="genre" value="Gourmet">
-    <label class="btn btn-outline-primary" for="gourmet">Gourmet</label>
-  </section><br>
-  <section class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-    <input type="checkbox" class="btn-check" id="horror" name="genre" value="Horror">
-    <label class="btn btn-outline-primary" for="horror">Horror</label>
-    <input type="checkbox" class="btn-check" id="mystery" name="genre" value="Mystery">
-    <label class="btn btn-outline-primary" for="mystery">Mystery</label>
-    <input type="checkbox" class="btn-check" id="romance" name="genre" value="Romance">
-    <label class="btn btn-outline-primary" for="romance">Romance</label>
-    <input type="checkbox" class="btn-check" id="romantic_comedy" name="genre" value="Romantic Comedy">
-    <label class="btn btn-outline-primary" for="romantic_comedy">Romantic Comedy</label>
-  </section><br>
-  <section class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-    <input type="checkbox" class="btn-check" id="sci-fi" name="genre" value="Sci-Fi">
-    <label class="btn btn-outline-primary" for="sci-fi">Sci-Fi</label>
-    <input type="checkbox" class="btn-check" id="slice_of_life" name="genre" value="Slice of Life">
-    <label class="btn btn-outline-primary" for="slice_of_life">Slice of Life</label>
-    <input type="checkbox" class="btn-check" id="sports" name="genre" value="Sports">
-    <label class="btn btn-outline-primary" for="sports">Sports</label>
-    <input type="checkbox" class="btn-check" id="supernatural" name="genre" value="Supernatural">
-    <label class="btn btn-outline-primary" for="supernatural">Supernatural</label>
-  </section><br>
-  <section class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-    <input type="checkbox" class="btn-check" id="suspense" name="genre" value="Suspense">
-    <label class="btn btn-outline-primary" for="suspense">Suspense</label>
-    <input type="checkbox" class="btn-check" id="yaoi" name="genre" value="Yaoi">
-    <label class="btn btn-outline-primary" for="yaoi">Yaoi</label>
-    <input type="checkbox" class="btn-check" id="yuri" name="genre" value="Yuri">
-    <label class="btn btn-outline-primary" for="yuri">Yuri</label>
-  </section><br>
-  <legend>Theme: (Apply as many)</legend>
-  <section class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-    <input type="checkbox" class="btn-check" id="adult_cast" name="theme" value="Adult Cast">
-    <label class="btn btn-outline-primary" for="adult_cast">Adult Cast</label>
-    <input type="checkbox" class="btn-check" id="Anthropomorphic" name="theme" value="Anthropomorphic">
-    <label class="btn btn-outline-primary" for="Anthropomorphic">Anthropomorphic</label>
-    <input type="checkbox" class="btn-check" id="cgdct" name="theme" value="CGDCT">
-    <label class="btn btn-outline-primary" for="cgdct">CGDCT</label>
-    <input type="checkbox" class="btn-check" id="childcare" name="theme" value="Child Care">
-    <label class="btn btn-outline-primary" for="childcare">Child Care</label>
-  </section><br>
-  <section class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-    <input type="checkbox" class="btn-check" id="combat_sport" name="theme" value="Combat Sport">
-    <label class="btn btn-outline-primary" for="combat_sport">Combat Sport</label>
-    <input type="checkbox" class="btn-check" id="crossdressing" name="theme" value="Crossdressing">
-    <label class="btn btn-outline-primary" for="crossdressing">Crossdressing</label>
-    <input type="checkbox" class="btn-check" id="delinquents" name="theme" value="Delinquents">
-    <label class="btn btn-outline-primary" for="delinquents">Delinquents</label>
-    <input type="checkbox" class="btn-check" id="detective" name="theme" value="Detective">
-    <label class="btn btn-outline-primary" for="detective">Detective</label>
-  </section><br>
-  <section class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-    <input type="checkbox" class="btn-check" id="educational" name="theme" value="Educational">
-    <label class="btn btn-outline-primary" for="educational">Educational</label>
-    <input type="checkbox" class="btn-check" id="gag_humor" name="theme" value="Gag Humor">
-    <label class="btn btn-outline-primary" for="gag_humor">Gag Humor</label>
-    <input type="checkbox" class="btn-check" id="gore" name="theme" value="Gore">
-    <label class="btn btn-outline-primary" for="gore">Gore</label>
-    <input type="checkbox" class="btn-check" id="harem" name="theme" value="Harem">
-    <label class="btn btn-outline-primary" for="harem">Harem</label>
-  </section><br>
-  <section class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-    <input type="checkbox" class="btn-check" id="high_stakes_game" name="theme" value="High Stakes Game">
-    <label class="btn btn-outline-primary" for="high_stakes_game">High Stakes Game</label>
-    <input type="checkbox" class="btn-check" id="historical" name="theme" value="Historical">
-    <label class="btn btn-outline-primary" for="historical">Historical</label>
-    <input type="checkbox" class="btn-check" id="idols_female" name="theme" value="Idols (Female)">
-    <label class="btn btn-outline-primary" for="idols_female">Idols (Female)</label>
-    <input type="checkbox" class="btn-check" id="idols_male" name="theme" value="Idols (Male)">
-    <label class="btn btn-outline-primary" for="idols_male">Idols (Male)</label>
-  </section><br>
-  <section class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-    <input type="checkbox" class="btn-check" id="isekai" name="theme" value="Isekai">
-    <label class="btn btn-outline-primary" for="isekai">Isekai</label>
-    <input type="checkbox" class="btn-check" id="iyashikei" name="theme" value="Iyashikei">
-    <label class="btn btn-outline-primary" for="iyashikei">Iyashikei</label>
-    <input type="checkbox" class="btn-check" id="love_polygon" name="theme" value="Love Polygon">
-    <label class="btn btn-outline-primary" for="love_polygon">Love Polygon</label>
-    <input type="checkbox" class="btn-check" id="magical_sex_shift" name="theme" value="Magical Sex Shift">
-    <label class="btn btn-outline-primary" for="magical_sex_shift">Magical Sex Shift</label>
-  </section><br>
-  <section class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-    <input type="checkbox" class="btn-check" id="mahou_shojo" name="theme" value="Mahou Shojo">
-    <label class="btn btn-outline-primary" for="mahou_shojo">Mahou Shojo</label>
-    <input type="checkbox" class="btn-check" id="martials_arts" name="theme" value="Martial Arts">
-    <label class="btn btn-outline-primary" for="martials_arts">Martial Arts</label>
-    <input type="checkbox" class="btn-check" id="mecha" name="theme" value="Mecha">
-    <label class="btn btn-outline-primary" for="mecha">Mecha</label>
-    <input type="checkbox" class="btn-check" id="medical" name="theme" value="Medical">
-    <label class="btn btn-outline-primary" for="medical">Medical</label>
-  </section><br>
-  <section class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-    <input type="checkbox" class="btn-check" id="memoir" name="theme" value="Memoir">
-    <label class="btn btn-outline-primary" for="memoir">Memoir</label>
-    <input type="checkbox" class="btn-check" id="military" name="theme" value="Military">
-    <label class="btn btn-outline-primary" for="military">Military</label>
-    <input type="checkbox" class="btn-check" id="music" name="theme" value="Music">
-    <label class="btn btn-outline-primary" for="music">Music</label>
-    <input type="checkbox" class="btn-check" id="mythology" name="theme" value="Mythology">
-    <label class="btn btn-outline-primary" for="mythology">Mythology</label>
-  </section><br>
-  <section class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-    <input type="checkbox" class="btn-check" id="organized_crime" name="theme" value="Organized Crime">
-    <label class="btn btn-outline-primary" for="organized_crime">Organized Crime</label>
-    <input type="checkbox" class="btn-check" id="otaku_culture" name="theme" value="Otaku Culture">
-    <label class="btn btn-outline-primary" for="otaku_culture">Otaku Culture</label>
-    <input type="checkbox" class="btn-check" id="parody" name="theme" value="Parody">
-    <label class="btn btn-outline-primary" for="parody">Parody</label>
-    <input type="checkbox" class="btn-check" id="performing_arts" name="theme" value="Performing Arts">
-    <label class="btn btn-outline-primary" for="performing_arts">Performing Arts</label>
-  </section><br>
-  <section class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-    <input type="checkbox" class="btn-check" id="pets" name="theme" value="Pets">
-    <label class="btn btn-outline-primary" for="pets">Pets</label>
-    <input type="checkbox" class="btn-check" id="psychological" name="theme" value="Psychological">
-    <label class="btn btn-outline-primary" for="psychological">Psychological</label>
-    <input type="checkbox" class="btn-check" id="racing" name="theme" value="Racing">
-    <label class="btn btn-outline-primary" for="racing">Racing</label>
-    <input type="checkbox" class="btn-check" id="reincarnation" name="theme" value="Reincarnation">
-    <label class="btn btn-outline-primary" for="reincarnation">Reincarnation</label>
-  </section><br>
-  <section class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-    <input type="checkbox" class="btn-check" id="reverse_harem" name="theme" value="Reverse Harem">
-    <label class="btn btn-outline-primary" for="reverse_harem">Reverse Harem</label>
-    <input type="checkbox" class="btn-check" id="romantic_subtext" name="theme" value="Romantic Subtext">
-    <label class="btn btn-outline-primary" for="romantic_subtext">Romantic Subtext</label>
-    <input type="checkbox" class="btn-check" id="samurai" name="theme" value="Samurai">
-    <label class="btn btn-outline-primary" for="samurai">Samurai</label>
-    <input type="checkbox" class="btn-check" id="school" name="theme" value="School">
-    <label class="btn btn-outline-primary" for="school">School</label>
-  </section><br>
-  <section class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-    <input type="checkbox" class="btn-check" id="showbix" name="theme" value="Showbix">
-    <label class="btn btn-outline-primary" for="showbix">Showbix</label>
-    <input type="checkbox" class="btn-check" id="space" name="theme" value="Space">
-    <label class="btn btn-outline-primary" for="space">Space</label>
-    <input type="checkbox" class="btn-check" id="strategy_game" name="theme" value="Strategy Game">
-    <label class="btn btn-outline-primary" for="strategy_game">Strategy Game</label>
-    <input type="checkbox" class="btn-check" id="super_power" name="theme" value="Super Power">
-    <label class="btn btn-outline-primary" for="super_power">Super Power</label>
-  </section><br>
-  <section class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-    <input type="checkbox" class="btn-check" id="survival" name="theme" value="Survival">
-    <label class="btn btn-outline-primary" for="survival">Survival</label>
-    <input type="checkbox" class="btn-check" id="team_sports" name="theme" value="Team Sports">
-    <label class="btn btn-outline-primary" for="team_sports">Team Sports</label>
-    <input type="checkbox" class="btn-check" id="time_travel" name="theme" value="Time Travel">
-    <label class="btn btn-outline-primary" for="time_travel">Time Travel</label>
-    <input type="checkbox" class="btn-check" id="vampire" name="theme" value="Vampire">
-    <label class="btn btn-outline-primary" for="vampire">Vampire</label>
-  </section><br>
-  <section class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-    <input type="checkbox" class="btn-check" id="video_game" name="theme" value="Video Game">
-    <label class="btn btn-outline-primary" for="video_game">Video Game</label>
-    <input type="checkbox" class="btn-check" id="villianess" name="theme" value="Villianess">
-    <label class="btn btn-outline-primary" for="villianess">Villianess</label>
-    <input type="checkbox" class="btn-check" id="visual_arts" name="theme" value="Visual Arts">
-    <label class="btn btn-outline-primary" for="visual_arts">Visual Arts</label>
-    <input type="checkbox" class="btn-check" id="workplace" name="theme" value="Workplace">
-    <label class="btn btn-outline-primary" for="workplace">Workplace</label>
-  </section><br>
-  <legend>Demographic: (Apply as many)</legend>
-  <section class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-    <input type="checkbox" class="btn-check" id="josei" name="demographic" value="Josei">
-    <label class="btn btn-outline-primary" for="josei">Josei</label>
-    <input type="checkbox" class="btn-check" id="kids" name="demographic" value="Kids">
-    <label class="btn btn-outline-primary" for="kids">Kids</label>
-    <input type="checkbox" class="btn-check" id="seinen" name="demographic" value="Seinen">
-    <label class="btn btn-outline-primary" for="seinen">Seinen</label>
-    <input type="checkbox" class="btn-check" id="shoujo" name="demographic" value="Shoujo">
-    <label class="btn btn-outline-primary" for="shoujo">Shoujo</label>
-    <input type="checkbox" class="btn-check" id="shounen" name="demographic" value="Shounen">
-    <label class="btn btn-outline-primary" for="shounen">Shounen</label>
-  </section><br>
-  <div>
-    <label for="authorStory">Author: </label>
-    <input type="text" name="authorStory" id="authorStory" required="true"><br >
-  </div>
-  <div>
-    <label for="authorArtist">Artist: </label>
-    <input type="text" name="authorArtist" id="authorArtist"><br>
-  </div>
-  <section>
-    <label for="description">Description: </label><br />
-    <textarea name="description" id="description" cols="75" rows="10" placeholder="What is it about?" required="true"></textarea><br />
-  </section>
-  <div>
-    <label for="releaseDate">Release Date: </label>
-    <input type="text" name="releaseDate" id="releaseDate" required="true"><br>
-  </div>
-  <div>
-    <label for="finishedDate">Finished Date:</label>
-    <input type="text" name="finishedDate" id="finishedDate"><br>
-  </div>
-  <div>
-    <label  for="completion">Is the series finished?</label>
-    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-      <input type="radio" class="btn-check" name="completion" id="btnradio2" value="false" autocomplete="off" checked>
-      <label class="btn btn-outline-secondary" for="btnradio2">No</label>
-
-      <input type="radio" class="btn-check" name="completion" id="btnradio1" value="true" autocomplete="off">
-      <label class="btn btn-outline-secondary" for="btnradio1">Yes</label>
+  <form action="/mangas" method="post" id="newManga">
+    <div class="container">
+      <div class="row g-3">
+        <div class="col-md-4">
+          <label for="englishTitle" class="form-label">English Title of Manga*</label>
+          <input class="form-control mb-3" type="text" name="englishTitle" id="englishTitle" placeholder="eg: One Piece" required="true">
+        </div>
+        <div class="japaneseText col-md-4">
+          <label for="japaneseTitle" class="form-label">Japanese Title of Manga*</label>
+          <input class="form-control mb-3" type="text" name="japaneseTitle" id="japaneseTitle" placeholder="eg: ワンピース" required="true">
+        </div>
+        <div class="col-md-4">
+          <label for="romanjiTitle" class="form-label">Romanji Title of Manga*</label>
+          <input class="form-control mb-3" type="text" name="romanjiTitle" id="englishTitle" placeholder="Wan Pisu" required="true">
+        </div>
+        <div class="col-md-4">
+          <label for="publicRating" class="form-label">Public Rating:*</label>
+          <input class="form-control mb-3" type="number" name="publicRating" id="publicRating" placeholder="9.21" min="1" max="10" step="any" required="true"><br>
+        </div>
+        <div class="col-md-4">
+          <label for="personalRating" class="form-label">Personal Rating:*</label>
+          <input class="form-control mb-3" type="number" name="personalRating" id="personalRating" placeholder="9.5" min="1" max="10" step="any" required="true"><br>
+        </div>
+        <div class="col-md-4">
+          <label for="volumeCount" class="form-label">Volume Count:*</label>
+          <input class="form-control mb-3" type="number" name="volumeCount" id="volumeCount" placeholder="105" min="1" max="300"required="true"><br>
+        </div>        
+      </div>
     </div>
-  </div>
-  <div>
-    <button class="btn btn-outline-success">Submit</button>
-    <a class="btn btn-outline-danger" href="/mangas">Cancel</a>
-  </div>
-</form>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <label for="authorStory" class="form-label">Mangaka(Author/Artist)*</label>
+          <input class="form-control mb-3" type="text" name="authorStory" id="authorStory" placeholder="eg: Eiichiro Oda " required="true">
+        </div>
+        <div class="col-md-3">
+          <label for="authorArtist" class="form-label">Mangaka(Artist if apply)</label>
+          <input class="form-control mb-3" type="text" name="authorArtist" id="authorArtist" placeholder="">
+        </div>
+        <div class="col-md-3">
+          <label for="releaseDate" class="form-label">Manga Released*</label>
+          <input class="form-control mb-3" type="text" name="releaseDate" id="releaseDate" placeholder="eg: July 22, 1997" required="true">
+        </div>
+        <div class="col-md-3">
+          <label for="finishedDate" class="form-label">Manga Finished(If apply)</label>
+          <input class="form-control mb-3" type="text" name="finishedDate" id="finishedDate" placeholder="">
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <label for="description" class="form-label">Description*</label>
+          <textarea class="form-control mb-3" name="description" id="description" rows="7" placeholder='Gol D. Roger, a man referred to as the "Pirate King," is set to be executed by the World Government. But just before his demise, he confirms the existence of a great treasure, One Piece, located somewhere within the vast ocean known as the Grand Line. Announcing that One Piece can be claimed by anyone worthy enough to reach it, the Pirate King is executed and the Great Age of Pirates begins.
 
+          Twenty-two years later, a young man by the name of Monkey D. Luffy is ready to embark on his own adventure, searching for One Piece and striving to become the new Pirate King. Armed with just a straw hat, a small boat, and an elastic body, he sets out on a fantastic journey to gather his own crew and a worthy ship that will take them across the Grand Line to claim the greatest status on the high seas.'
+          ></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row g-3 align-items-start">
+        <div class="col-sm-6 btn-group-vertical btn-group-sm" role="group" aria-label="Basic checkbox toggle button group">
+          <div class="col-12">
+          <legend class="mb-2">Genre: (Select all that apply)*</legend>
+            <% for (let i = 0; i < genre.length; i++) { %>
+              <input type="checkbox" class="btn-check" id="<%= genre[i] %>" name="genre" value="<%= genre[i] %>">
+              <label class="btn btn-outline-primary btnList mb-2" for="<%= genre[i] %>"><%= genre[i] %></label>
+            <% } %>
+          <legend class="mb-2">Demographic: (Select all that apply)*</legend>
+            <% for (let i = 0; i < demographic.length; i++) { %>
+              <input type="checkbox" class="btn-check" id="<%= demographic[i] %>" name="genre" value="<%= demographic[i] %>">
+              <label class="btn btn-outline-primary btnList mb-2" for="<%= demographic[i] %>"><%= demographic[i] %></label>
+            <% } %>
+          <legend>Is the series finished?*</legend><br>
+            <input type="radio" class="btn-check" name="completion" id="btnradio2" value="false" autocomplete="off" checked>
+            <label class="btn btn-outline-danger btn-lg" for="btnradio2">No</label>
+    
+            <input type="radio" class="btn-check" name="completion" id="btnradio1" value="true" autocomplete="off">
+            <label class="btn btn-outline-success btn-lg" for="btnradio1">Yes</label>
+
+          <legend class="mb-2">Upload an image*</legend>
+          <form action="/upload" method="POST" enctype="multipart/form-data" onsubmit="event.preventDefault();">
+            <div class="custom-file mb-3">
+              <input type="file" name="file" id="file" class="custom-file-input">
+              <label for="file" class="custom-file-label"></label>
+            </div>
+            <input type="submit" value="Submit" class="btn btn-primary btn-block">
+          </form>
+          </div>
+        </div>
+        <div class="col-sm-6 btn-group-vertical btn-group-sm" role="group" aria-label="Basic checkbox toggle button group">
+          <div class="col-12">
+          <legend>Theme: (Select all that apply)*</legend>
+            <% for (let i = 0; i < theme.length; i++) { %>
+              <input type="checkbox" class="btn-check" id="<%= theme[i] %>" name="genre" value="<%= theme[i] %>">
+              <label class="btn btn-outline-primary btnList mb-2" for="<%= theme[i] %>"><%= theme[i] %></label>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div> 
+    <div id="btnSubmit" class="text-center">
+      <button class="btn btn-outline-success">Submit</button>
+      <a class="btn btn-outline-danger" href="/mangas">Cancel</a>
+    </div>
+  </form>
+</div>
 <%- include('../partials/footer'); %>
