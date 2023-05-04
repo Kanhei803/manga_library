@@ -1,18 +1,58 @@
 <%- include('../partials/header'); %>
     <title><%= manga.romanjiTitle %></title>
+    <link rel="icon" href="../imgs/favicon.ico" type="image/x-icon"/>
 <%- include('../partials/styles'); %>
+<body class="page-common d-flex flex-column min-vh-100">
 <%- include('../partials/nav'); %>
-    <h1><%= manga.englishTitle %></h1>
-    <h4><%= manga.romanjiTitle %></h4>
-    <h4><%= manga.japaneseTitle %></h4>
-    <ul>
-      <li>Public Rating: <%= manga.publicRating %></li>
-      <li>Personal Rating: <%= manga.personalRating %></li>
-      <li>Volume Count: <%= manga.volumeCount %></li>
-      <li>Genre: <%= manga.genre %></li>
-      <li>Manga Completed: <%= manga.completion ? "It's Complete" : "Still running" %></li>
-    </ul>
-    <p>Description: <%= manga.description %></p>
-    <a href="/mangas/update/<%= manga.id %>">Edit</a>
-  <%- include('../partials/footer'); %>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <span class="h1-title"><%= manga.romanjiTitle %></span><br>
+        <span class="h2-title"><%= manga.englishTitle %></span><br>
+      </div>
+    </div>
+    <div class="container" width="225" style="border-width: 0 1px 0 0"; valign="top">
+      <div class="row leftside" style="width: 225px">
+        <div style="text-align: center">
+          <div class="col">
+            <img style="width: 225px; height: 320px" src="../imgs/manga/<%= manga.englishTitle %>.jpg" alt="">
+          </div>
+        </div>
+      </div>
+        <h2>Alternative Titles</h2>
+        <div class="div-info"><span class="span-info">Japanese: </span><%= manga.japaneseTitle %></div>
+        <div class="div-info"><span class="span-info">English: </span><%= manga.englishTitle %></div>
+        <br>
+        <h2>Information</h2>
+        <div class="div-info"><span class="span-info">Type: </span>Manga</div>
+        <div class="div-info"><span class="span-info">Volume: </span><%= manga.volumeCount %></div>
+        <div class="div-info"><span class="span-info">Status: </span><%= manga.completion ? "Finished" : "Ongoing" %></div>
+        <div class="div-info"><span class="span-info">Published: </span><%= manga.releaseDate %> to <%= manga.finishedDate %></div>
+        <div class="div-info"><span class="span-info">Genre: </span>
+          <% for (let i = 0; i < manga.genre.length; i++) { %> 
+            <a style="text-decoration: none;" href="<%= manga.genre[i] %>"><%= manga.genre[i] %></a>
+          <% } %>
+        </div>
+        <div class="div-info"><span class="span-info">Theme: </span>
+          <% for (let i = 0; i < manga.theme.length; i++) { %> 
+            <a style="text-decoration: none;" href="<%= manga.theme[i] %>"><%= manga.theme[i] %></a>
+          <% } %>
+        </div>
+        <div class="div-info"><span class="span-info">Demographic: </span>
+          <% for (let i = 0; i < manga.demographic.length; i++) { %> 
+            <a style="text-decoration: none;" href="<%= manga.demographic[i] %>"><%= manga.demographic[i] %></a>
+          <% } %>
+        </div>
+    </div>
+    <div class="container">
+      <div class="row rightside">
+        <div>
+          <div class="col">
+            <p>SCORE</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 

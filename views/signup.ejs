@@ -5,28 +5,29 @@
 
 <!-- STYLE PARTIAL -->
 <%- include('partials/styles'); %>
+<body class="page-common d-flex flex-column min-vh-100"></body>
 
 <!-- NAVIGATION PARTIAL -->
 <%- include('partials/nav'); %>
+
 <form action="/signup" method="post">
-  <div class="col col-6 col-md text-center">
-    <div>
-      <label for="username">Display name: </label>
-      <input type="text" name="username" id="username">
+  <div class="container">
+    <div class="row position-absolute w-25 top-50 start-50 translate-middle">
+      <h1>Sign Up!</h1>
+      <label for="username" class="form-label">Display name: </label>
+      <input class="form-control" type="text" name="username" id="username">
+      <label for="email" class="form-label mt-3">Email: </label>
+      <input class="form-control" type="email" name="email" id="email">
+      <label for="password" class="form-label mt-3">Password: </label>
+      <input class="form-control" type="password" name="password" id="password">
+      <div>
+        <input type="checkbox" value="checkbox" checked>
+        <label for="checkbox">Opt-in to be added into news-letter</label>
+      </div>
+      <div class="w-75">
+        <button class="btn btn-primary mt-3">Sign Up!</button>
+      </div>
     </div>
-    <div>
-      <label for="email">Email: </label>
-      <input type="email" name="email" id="email">
-    </div>
-    <div>
-      <label for="password">Password: </label>
-      <input type="password" name="password" id="password">
-    </div>
-    <div>
-      <input type="checkbox" value="checkbox" checked>
-      <label for="checkbox">Opt-in to be added into news-letter</label>
-    </div>
-    <button>Sign Up</button>
   </div>
 </form>
 

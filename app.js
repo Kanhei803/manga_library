@@ -49,7 +49,12 @@ conn.once('open', () => {
     gfs.collection('uploads');
 })
 
-// Create storage engine
+// @desc: Variables to use
+const genre = ['Action', 'Adventure', 'Award Winning', 'Comedy', 'Coming of Age', 'Drama', 'Fantasy', 'Gourmet', 'Horror', 'Mystery', 'Romance', 'Romantic Comedy', 'Sci-Fi', 'Slice of Life', 'Sports', 'Supernatural', 'Suspense', 'Yaoi', 'Yuri']
+const theme = ['Adult Cast', 'Anthropomorphic', 'CGDCT', 'Childcare', 'Combat Sports', 'Crossdressing', 'Delinquents', 'Detective', 'Educational', 'Gag Humor', 'Gore', 'Harem', 'High Stakes Game', 'Historical', 'Idols (Female)', 'Idols (Male)', 'Isekai', 'Iyashikei', 'Love Polygon', 'Magical Sex Shift', 'Mahou Shojo', 'Martials Arts', 'Mecha', 'Medical', 'Memoir', 'Military', 'Music', 'Mythology', 'Organized Crime', 'Otaku Culture', 'Parody', 'Performing Arts', 'Pets', 'Psychological', 'Racing', 'Reincarnation', 'Reverse Harem', 'Romantic Subtext', 'Samurai', 'School', 'Showbix', 'Space', 'Strategy Game', 'Super Power', 'Survival', 'Team Sports', 'Time Travel', 'Vampire', 'Video Game', 'Villainess', 'Visual Arts', 'Workplace']
+const demographic = ['Josei', 'Kids', 'Seinen', 'Shoujo', 'Shounen']
+
+// @desc: Create storage engine
 const storage = new GridFsStorage({
     url: dbUrl,
     file: (req, file) => {
@@ -71,19 +76,25 @@ const storage = new GridFsStorage({
   const upload = multer({ storage });
 
 // @route GET /
-// @desc Loads form
+// @desc: Loads form
 app.get('/', (req, res) => {
     res.render('index');
 });
 
+//
+//
+app.get('/secret', isLoggedIn, (req, res) => {
+    res.render('secret')
+})
+
 // @route POST /upload
-// @desc Uploads file to DB
+// @desc: Uploads file to DB
 app.post('/upload', upload.single('file'), (req, res) => {
     res.redirect('/');
 });
 
 // @route GET /files
-// @desc Display all files in JSON
+// @desc: Display all files in JSON
 app.get('/files', (req, res) => {
     gfs.files.find()((err, files) => {
         if(!files || files.length === 0) {
@@ -95,17 +106,43 @@ app.get('/files', (req, res) => {
     });
 });
 
-// GET LOGIN PAGE
+// @route GET /login
+// desc: Rendering the login page
 app.get('/login', (req,res) => {
     res.render('login')
 });
 
-// GET SIGN UP PAGE
+// @route POST /auth
+// desc: Check if user + password exist
+app.post("/auth", async function(req, res){
+    try {
+        // check if the user exists
+        const user = await UserModel.findOne({ username: req.body.username });
+        if (user) {
+          //check if password matches
+          const result = req.body.password === user.password;
+          if (result) {
+            console.log('It worked!')
+            res.redirect('secret');
+          } else {
+            res.status(400).json({ error: "password doesn't match" });
+          }
+        } else {
+          res.status(400).json({ error: "User doesn't exist" });
+        }
+      } catch (error) {
+        res.status(400).json({ error });
+      }
+});
+
+// @route GET /signup
+// desc: Rendering the signup page
 app.get('/signup', (req,res) => {
     res.render('signup')
 });
 
-// POST SIGN UP PAGE
+// @route POST /singup
+// desc: Adding a user into the DB
 app.post('/signup', async (req, res) => {
     const NewUser = new UserModel(req.body)
     await NewUser.save()
@@ -118,14 +155,16 @@ app.post('/signup', async (req, res) => {
     res.send("It worked?")
 });
 
-// GET ALL MANGA LIST PAGE
+// @route GET /mangas
+// desc: Rendering all manga page
 app.get('/mangas', async (req,res) => {
     const titles = await MangaModel.find().sort({englishTitle: 1})
     res.render('mangas/index', { titles })
 });
 
 // POST NEW MANGA INTO DB
-app.post('/mangas', upload.single('file'), async (req, res) => {
+// desc: Adding new manga into DB
+app.post('/mangasNew', upload.single('file'), async (req, res) => {
     const SaveManga = new MangaModel(req.body)
     await SaveManga.save() 
     .then(() => {
@@ -139,26 +178,25 @@ app.post('/mangas', upload.single('file'), async (req, res) => {
 
 // GET ADD NEW MANGA PAGE
 app.get('/mangas/new', async (req, res) => {
-    const genre = ['Action', 'Adventure', 'Award Winning', 'Comedy', 'Coming of Age', 'Drama', 'Fantasy', 'Gourmet', 'Horror', 'Mystery', 'Romance', 'Romantic Comedy', 'Sci-Fi', 'Slice of Life', 'Sports', 'Supernatural', 'Suspense', 'Yaoi', 'Yuri']
-    const theme = ['Adult Cast', 'Anthropomorphic', 'CGDCT', 'Childcare', 'Combat Sports', 'Crossdressing', 'Delinquents', 'Detective', 'Educational', 'Gag Humor', 'Gore', 'Harem', 'High Stakes Game', 'Historical', 'Idols (Female)', 'Idols (Male)', 'Isekai', 'Iyashikei', 'Love Polygon', 'Magical Sex Shift', 'Mahou Shojo', 'Martials Arts', 'Mecha', 'Medical', 'Memoir', 'Military', 'Music', 'Mythology', 'Organized Crime', 'Otaku Culture', 'Parody', 'Performing Arts', 'Pets', 'Psychological', 'Racing', 'Reincarnation', 'Reverse Harem', 'Romantic Subtext', 'Samurai', 'School', 'Showbix', 'Space', 'Strategy Game', 'Super Power', 'Survival', 'Team Sports', 'Time Travel', 'Vampire', 'Video Game', 'Villainess', 'Visual Arts', 'Workplace']
-    const demographic = ['Josei', 'Kids', 'Seinen', 'Shoujo', 'Shounen']
     const { id } = req.params;
-    const manga = await MangaModel.find(id);
+    const manga = await MangaModel.findById(id);
     res.render('mangas/new', { manga, genre, theme, demographic })
 });
 
-// GET INDIVIDUAL MANGA UPDATE PAGE
-app.get('/mangas/update/:id', async (req, res) => {
+// @route GET edit page
+// desc: get the edit page of each manga
+app.get('/mangas/:id/edit', async (req, res) => {
     const { id } = req.params;
     const manga = await MangaModel.findById(id);
-    res.render('mangas/update', { manga })
+    res.render('mangas/edit', { manga, genre, theme, demographic })
 });
 
-// POST UPDATES TO MANGA 
-app.post('/mangas/update/:id', async (req, res) => {
-    // const { id } = req.params;
-    // const manga = await MangaModel.findById(id)
-    // res.render('mangas/update')
+// @route /mangas/:id
+// desc: Edit info in specific manga.
+app.put('/mangas/:id', async (req, res) => {
+    const { id } = req.params;
+    const manga = await MangaModel.findByIdAndUpdate(id, { ...req.body.manga });
+    res.redirect('mangas', {manga, genre, theme, demographic})
 });
 
 // SPECIFIC MANGA PAGE
@@ -183,6 +221,10 @@ app.get('/inserted', async (req, res) => {
     res.redirect('mangas')
 });
 
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) return next();
+    res.redirect("/login");
+}
 
 // PORT LISTEN
 app.listen(PORT, () => {
