@@ -7,12 +7,13 @@ const multer = require('multer')
 const {GridFsStorage} = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
 const methodOverride = require('method-override');
+const ejsMate = require('ejs-mate');
 const MangaModel = require('./models/mangaSchema');
 const mangaData = require('./models/mangaDB.json');
 const UserModel = require('./models/userSchema');
 
 // PORT NUMBER
-const PORT = 8008;
+const PORT = 8080;
 
 // MONGOOSE CONNECTION
 const mongoose = require('mongoose');
@@ -32,6 +33,7 @@ mongoose.connect(dbUrl, connectionParams)
 })
 
 // MIDDLEWARE
+app.engine('ejs', ejsMate)
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 app.use(express.static(__dirname + '/public'));
@@ -225,6 +227,12 @@ function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) return next();
     res.redirect("/login");
 }
+
+// @route USE
+// Error Page if not found 
+app.use((req, res) => {
+    res.status(404).send("APP NOT FOUND!")
+})
 
 // PORT LISTEN
 app.listen(PORT, () => {

@@ -1,14 +1,4 @@
-<!-- HEADER PARTIAL -->
-<%- include('partials/header'); %>
-
-<title>Log In | Kenhie</title>
-
-<!-- STYLE PARTIAL -->
-<%- include('partials/styles'); %>
-<body class="page-common d-flex flex-column min-vh-100"></body>
-
-<!-- NAVIGATION PARTIAL -->
-<%- include('partials/nav'); %>
+<% layout('/layouts/boilerplate') %>
 
 <form action="/signup" method="post">
   <div class="container">
@@ -30,6 +20,3 @@
     </div>
   </div>
 </form>
-
-<!-- FOOTER PARTIAL -->
-<%- include('partials/footer'); %>
