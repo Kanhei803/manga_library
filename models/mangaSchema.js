@@ -19,8 +19,9 @@ const mangaSchema = new mongoose.Schema({
 		minLength: 1,
         unique: true
     },
-    file: {
+    img: {
         type: String,
+        required: [true, 'Please add an img url']
     },
     publicRating: {
         type: Number,
