@@ -1,10 +1,6 @@
-<%- include('../partials/header'); %>
-<title>Adding Manga | Kenhie</title>
-<%- include('../partials/styles'); %> 
-<body class="d-flex flex-column min-vh-100">
-<%- include('../partials/nav'); %>
+<% layout('layouts/boilerplate') %>
   <div class="container">
-    <h2 class="pageTitle mb-3">Add New Manga</h1>
+    <h3 class="pageTitle mb-3">Add New Manga</h3>
   </div>
   <form action="/mangasNew" method="post" id="newManga">
     <div class="container">
