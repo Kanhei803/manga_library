@@ -12,6 +12,9 @@ const MangaModel = require('./models/mangaSchema');
 const mangaData = require('./models/mangaDB.json');
 const UserModel = require('./models/userSchema');
 
+// IMPORT JAVASCRIPT
+const AppError = require('./js/appError');
+
 // PORT NUMBER
 const PORT = 8080;
 
@@ -39,6 +42,7 @@ app.use(methodOverride('_method'));
 app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
+
 
 // Init gfs
 let gfs;
@@ -83,9 +87,9 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
-//
-//
-app.get('/secret', isLoggedIn, (req, res) => {
+// @route GET /secret
+// @desc: Render the secret page
+app.get('/secret', (req, res) => {
     res.render('secret')
 })
 
@@ -109,32 +113,9 @@ app.get('/files', (req, res) => {
 });
 
 // @route GET /login
-// desc: Rendering the login page
+// desc: Render the login page
 app.get('/login', (req,res) => {
     res.render('login')
-});
-
-// @route POST /auth
-// desc: Check if user + password exist
-app.post("/auth", async function(req, res){
-    try {
-        // check if the user exists
-        const user = await UserModel.findOne({ username: req.body.username });
-        if (user) {
-          //check if password matches
-          const result = req.body.password === user.password;
-          if (result) {
-            console.log('It worked!')
-            res.redirect('secret');
-          } else {
-            res.status(400).json({ error: "password doesn't match" });
-          }
-        } else {
-          res.status(400).json({ error: "User doesn't exist" });
-        }
-      } catch (error) {
-        res.status(400).json({ error });
-      }
 });
 
 // @route GET /signup
@@ -178,7 +159,8 @@ app.post('/mangasNew', upload.single('file'), async (req, res) => {
     res.redirect('mangas')
 });
 
-// GET ADD NEW MANGA PAGE
+// @route GET new page
+// desc: Page of adding new manga to DB
 app.get('/mangas/new', async (req, res) => {
     const { id } = req.params;
     const manga = await MangaModel.findById(id);
@@ -186,7 +168,7 @@ app.get('/mangas/new', async (req, res) => {
 });
 
 // @route GET edit page
-// desc: get the edit page of each manga
+// desc: Page of editing manga
 app.get('/mangas/:id/edit', async (req, res) => {
     const { id } = req.params;
     const manga = await MangaModel.findById(id);
@@ -223,15 +205,11 @@ app.get('/inserted', async (req, res) => {
     res.redirect('mangas')
 });
 
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) return next();
-    res.redirect("/login");
-}
-
 // @route USE
-// Error Page if not found 
-app.use((req, res) => {
-    res.status(404).send("APP NOT FOUND!")
+// Error status if not found 
+app.use((err, req, res, next) => {
+    const { status = 500, message = 'Something Went Wrong'} = err;
+    res.status(status).send(message)
 })
 
 // PORT LISTEN
