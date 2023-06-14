@@ -2,68 +2,98 @@
   <div class="container">
     <h3 class="pageTitle mb-3">Add New Manga</h3>
   </div>
-  <form action="/mangasNew" method="post" id="newManga">
+  <form action="/mangasNew" method="post" id="newManga" novalidate class="validated-form">
     <div class="container">
       <div class="row g-3">
         <div class="col-md-4">
           <label for="englishTitle" class="form-label">English Title of Manga*</label>
-          <input class="form-control mb-3" type="text" name="englishTitle" id="englishTitle" placeholder="eg: One Piece" required="true">
+          <input class="form-control" type="text" name="englishTitle" id="englishTitle" placeholder="eg: One Piece" required="true">
+          <div class="valid-feedback">
+            Looks Good!
+          </div>
         </div>
         <div class="japaneseText col-md-4">
           <label for="japaneseTitle" class="form-label">Japanese Title of Manga*</label>
-          <input class="form-control mb-3" type="text" name="japaneseTitle" id="japaneseTitle" placeholder="eg: ワンピース" required="true">
+          <input class="form-control" type="text" name="japaneseTitle" id="japaneseTitle" placeholder="eg: ワンピース" required="true">
+          <div class="valid-feedback">
+            Looks Good!
+          </div>
         </div>
         <div class="col-md-4">
           <label for="romanjiTitle" class="form-label">Romanji Title of Manga*</label>
-          <input class="form-control mb-3" type="text" name="romanjiTitle" id="englishTitle" placeholder="Wan Pisu" required="true">
+          <input class="form-control" type="text" name="romanjiTitle" id="englishTitle" placeholder="Wan Pisu" required="true">
+          <div class="valid-feedback">
+            Looks Good!
+          </div>
         </div>
         <div class="col-md-4">
           <label for="publicRating" class="form-label">Public Rating:*</label>
-          <input class="form-control mb-3" type="number" name="publicRating" id="publicRating" placeholder="9.21" min="1" max="10" step="any" required="true"><br>
+          <input class="form-control" type="number" name="publicRating" id="publicRating" placeholder="9.21" min="1" max="10" step="any" required="true">
+          <div class="valid-feedback">
+            Looks Good!
+          </div>
         </div>
         <div class="col-md-4">
           <label for="personalRating" class="form-label">Personal Rating:*</label>
-          <input class="form-control mb-3" type="number" name="personalRating" id="personalRating" placeholder="9.5" min="1" max="10" step="any" required="true"><br>
+          <input class="form-control" type="number" name="personalRating" id="personalRating" placeholder="9.5" min="1" max="10" step="any" required="true">
+          <div class="valid-feedback">
+            Looks Good!
+          </div>
         </div>
         <div class="col-md-4">
           <label for="volumeCount" class="form-label">Volume Count:*</label>
-          <input class="form-control mb-3" type="number" name="volumeCount" id="volumeCount" placeholder="105" min="1" max="300"required="true"><br>
+          <input class="form-control" type="number" name="volumeCount" id="volumeCount" placeholder="105" min="1" max="300"required="true">
+          <div class="valid-feedback">
+            Looks Good!
+          </div>
         </div> 
       </div>
     </div>
     <div class="container">
       <div class="row">
         <div class="col-md-3">
-          <label for="authorStory" class="form-label">Mangaka(Author/Artist)*</label>
-          <input class="form-control mb-3" type="text" name="authorStory" id="authorStory" placeholder="eg: Eiichiro Oda" required="true">
+          <label for="authorStory" class="form-label mt-2">Mangaka(Author/Artist)*</label>
+          <input class="form-control" type="text" name="authorStory" id="authorStory" placeholder="eg: Eiichiro Oda" required="true">
+          <div class="valid-feedback">
+            Looks Good!
+          </div>
         </div>
         <div class="col-md-3">
-          <label for="authorArtist" class="form-label">Mangaka(Artist if apply)</label>
-          <input class="form-control mb-3" type="text" name="authorArtist" id="authorArtist" placeholder="">
+          <label for="authorArtist" class="form-label mt-2">Mangaka(Artist if apply)</label>
+          <input class="form-control" type="text" name="authorArtist" id="authorArtist" placeholder="">
         </div>
         <div class="col-md-3">
-          <label for="releaseDate" class="form-label">Manga Released*</label>
-          <input class="form-control mb-3" type="text" name="releaseDate" id="releaseDate" placeholder="eg: July 22, 1997" required="true">
+          <label for="releaseDate" class="form-label mt-2">Manga Released*</label>
+          <input class="form-control" type="text" name="releaseDate" id="releaseDate" placeholder="eg: July 22, 1997" required="true">
+          <div class="valid-feedback">
+            Looks Good!
+          </div>
         </div>
         <div class="col-md-3">
-          <label for="finishedDate" class="form-label">Manga Finished(If apply)</label>
-          <input class="form-control mb-3" type="text" name="finishedDate" id="finishedDate" placeholder="">
+          <label for="finishedDate" class="form-label mt-2">Manga Finished(If apply)</label>
+          <input class="form-control" type="text" name="finishedDate" id="finishedDate" placeholder="">
         </div>
       </div>
     </div>
     <div class="container">
       <div class="row">
         <div class="col">
-          <label for="description" class="form-label">Description*</label>
-          <textarea class="form-control mb-3" name="description" id="description" rows="7" placeholder='Gol D. Roger, a man referred to as the "Pirate King," is set to be executed by the World Government. But just before his demise, he confirms the existence of a great treasure, One Piece, located somewhere within the vast ocean known as the Grand Line. Announcing that One Piece can be claimed by anyone worthy enough to reach it, the Pirate King is executed and the Great Age of Pirates begins.
+          <label for="description" class="form-label mt-2">Description*</label>
+          <textarea class="form-control" name="description" id="description" rows="7" placeholder='Gol D. Roger, a man referred to as the "Pirate King," is set to be executed by the World Government. But just before his demise, he confirms the existence of a great treasure, One Piece, located somewhere within the vast ocean known as the Grand Line. Announcing that One Piece can be claimed by anyone worthy enough to reach it, the Pirate King is executed and the Great Age of Pirates begins.
 
-          Twenty-two years later, a young man by the name of Monkey D. Luffy is ready to embark on his own adventure, searching for One Piece and striving to become the new Pirate King. Armed with just a straw hat, a small boat, and an elastic body, he sets out on a fantastic journey to gather his own crew and a worthy ship that will take them across the Grand Line to claim the greatest status on the high seas.'
+          Twenty-two years later, a young man by the name of Monkey D. Luffy is ready to embark on his own adventure, searching for One Piece and striving to become the new Pirate King. Armed with just a straw hat, a small boat, and an elastic body, he sets out on a fantastic journey to gather his own crew and a worthy ship that will take them across the Grand Line to claim the greatest status on the high seas.' required="true"
           ></textarea>
+          <div class="valid-feedback">
+            Looks Good!
+          </div>
         </div>
       </div>
       <div class="col">
-        <label for="img" class="form-label">Image Link:*</label>
-        <input class="form-control mb-3" type="text" name="img" id="img" placeholder="https://upload.wikimedia.org/wikipedia/en/5/51/Spy_Family_vol_1.jpg" required="true">
+        <label for="img" class="form-label mt-2">Image Link*</label>
+        <input class="form-control" type="text" name="img" id="img" placeholder="https://upload.wikimedia.org/wikipedia/en/5/51/Spy_Family_vol_1.jpg" required="true">
+        <div class="valid-feedback">
+          Looks Good!
+        </div>
       </div>
     </div>
     <div class="container">
