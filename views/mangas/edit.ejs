@@ -1,138 +1,135 @@
 <% layout('layouts/boilerplate') %>
-<div class="container">
-  <h3 class="pageTitle mb-3">Updating <%= manga.englishTitle %></h3>
-</div>
-<form action="/mangas/<%= manga._id %>?_method=PUT" method="POST" id="editManga" novalidate class="validated-form">
   <div class="container">
-    <div class="row g-3">
-      <div class="col-md-4">
-        <label for="englishTitle" class="form-label">English Title of Manga*</label>
-        <input class="form-control" type="text" name="englishTitle" id="englishTitle" value="<%= manga.englishTitle %>" required="true">
-        <div class="valid-feedback">
-            Looks Good!
-        </div>
-      </div>
-      <div class="japaneseText col-md-4">
-        <label for="japaneseTitle" class="form-label">Japanese Title of Manga*</label>
-        <input class="form-control" type="text" name="japaneseTitle" id="japaneseTitle" value="<%= manga.japaneseTitle %>" required="true">
-        <div class="valid-feedback">
-            Looks Good!
-        </div>
-      </div>
-      <div class="col-md-4">
-        <label for="romanjiTitle" class="form-label">Romanji Title of Manga*</label>
-        <input class="form-control" type="text" name="romanjiTitle" id="romanjiTitle" value="<%= manga.romanjiTitle %>" required="true">
-        <div class="valid-feedback">
-            Looks Good!
-        </div>
-      </div>
-      <div class="col-md-4">
-        <label for="publicRating" class="form-label">Public Rating:*</label>
-        <input class="form-control" type="number" name="publicRating" id="publicRating" value="<%= manga.publicRating %>" min="1" max="10" step="any" required="true">
-        <div class="valid-feedback">
-          Looks Good!
-        </div>
-      </div>
-      <div class="col-md-4">
-        <label for="personalRating" class="form-label">Personal Rating:*</label>
-        <input class="form-control" type="number" name="personalRating" id="personalRating" value="<%= manga.personalRating %>" min="1" max="10" step="any" required="true">
-        <div class="valid-feedback">
-          Looks Good!
-        </div>
-      </div>
-      <div class="col-md-4">
-        <label for="volumeCount" class="form-label">Volume Count:*</label>
-        <input class="form-control" type="number" name="volumeCount" id="volumeCount" value="<%= manga.volumeCount %>" min="1" max="300"required="true">
-        <div class="valid-feedback">
-          Looks Good!
-        </div>
-      </div>        
-    </div>
+    <h3 class="pageTitle mb-3">Updating <%= manga.englishTitle %></h3>
   </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3">
-        <label for="authorStory" class="form-label mt-2">Mangaka(Author/Artist)*</label>
-        <input class="form-control" type="text" name="authorStory" id="authorStory" value="<%= manga.authorStory %>" required="true">
-        <div class="valid-feedback">
-          Looks Good!
-        </div>
-      </div>
-      <div class="col-md-3">
-        <label for="authorArtist" class="form-label mt-2">Mangaka(Artist if apply)</label>
-        <input class="form-control" type="text" name="authorArtist" id="authorArtist" value="<%= manga.authorArtist %>">
-      </div>
-      <div class="col-md-3">
-        <label for="releaseDate" class="form-label mt-2">Manga Released*</label>
-        <input class="form-control" type="text" name="releaseDate" id="releaseDate" value="<%= manga.releaseDate %>" required="true">
-        <div class="valid-feedback">
-          Looks Good!
-        </div>
-      </div>
-      <div class="col-md-3">
-        <label for="finishedDate" class="form-label mt-2">Manga Finished(If apply)</label>
-        <input class="form-control" type="text" name="finishedDate" id="finishedDate" value="<%= manga.finishedDate %>">
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <label for="description" class="form-label mt-2">Description*</label>
-        <textarea class="form-control" name="description" id="description" rows="7"
-        ><%= manga.description %></textarea>
-        <div class="valid-feedback">
-          Looks Good!
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="row g-3 align-items-start">
-      <div class="col-sm-6 btn-group-vertical btn-group-sm" role="group" aria-label="Basic checkbox toggle button group">
-        <div class="col-12">
-        <legend class="mb-2">Genre: (Select all that apply)*</legend>
-          <% for (let i = 0; i < genre.length; i++) { %>
-            <input type="checkbox" class="btn-check" id="<%= genre[i] %>" name="genre" value="<%= genre[i] %>">
-            <label class="btn btn-outline-primary btnList mb-2" for="<%= genre[i] %>"><%= genre[i] %></label>
-          <% } %>
-        <legend class="mb-2">Demographic: (Select all that apply)*</legend>
-          <% for (let i = 0; i < demographic.length; i++) { %>
-            <input type="checkbox" class="btn-check" id="<%= demographic[i] %>" name="demographic" value="<%= demographic[i] %>">
-            <label class="btn btn-outline-primary btnList mb-2" for="<%= demographic[i] %>"><%= demographic[i] %></label>
-          <% } %>
-        <legend>Is the series finished?*</legend><br>
-          <input type="radio" class="btn-check" name="completion" id="btnradio2" value="false" autocomplete="off" checked>
-          <label class="btn btn-outline-danger btn-lg" for="btnradio2">No</label>
-  
-          <input type="radio" class="btn-check" name="completion" id="btnradio1" value="true" autocomplete="off">
-          <label class="btn btn-outline-success btn-lg" for="btnradio1">Yes</label>
-
-        <legend class="mb-2">Upload an image*</legend>
-        <!-- <form action="/upload" method="POST" enctype="multipart/form-data" onsubmit="event.preventDefault();">
-          <div class="custom-file mb-3">
-            <input type="file" name="file" id="file" class="custom-file-input">
-            <label for="file" class="custom-file-label"></label>
+  <form action="/mangas/<%= manga._id %>?_method=PUT" method="POST" id="editManga" novalidate class="validated-form">
+    <div class="container">
+      <div class="row g-3">
+        <div class="col-md-4">
+          <label for="englishTitle" class="form-label">English Title of Manga*</label>
+          <input class="form-control" type="text" name="englishTitle" id="englishTitle" value="<%= manga.englishTitle %>" required="true">
+          <div class="valid-feedback">
+              Looks Good!
           </div>
-          <input type="submit" value="Submit" class="btn btn-primary btn-block">
-        </form> -->
         </div>
+        <div class="japaneseText col-md-4">
+          <label for="japaneseTitle" class="form-label">Japanese Title of Manga*</label>
+          <input class="form-control" type="text" name="japaneseTitle" id="japaneseTitle" value="<%= manga.japaneseTitle %>" required="true">
+          <div class="valid-feedback">
+              Looks Good!
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label for="romanjiTitle" class="form-label">Romanji Title of Manga*</label>
+          <input class="form-control" type="text" name="romanjiTitle" id="romanjiTitle" value="<%= manga.romanjiTitle %>" required="true">
+          <div class="valid-feedback">
+              Looks Good!
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label for="publicRating" class="form-label">Public Rating:*</label>
+          <input class="form-control" type="number" name="publicRating" id="publicRating" value="<%= manga.publicRating %>" min="1" max="10" step="any" required="true">
+          <div class="valid-feedback">
+            Looks Good!
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label for="personalRating" class="form-label">Personal Rating:*</label>
+          <input class="form-control" type="number" name="personalRating" id="personalRating" value="<%= manga.personalRating %>" min="1" max="10" step="any" required="true">
+          <div class="valid-feedback">
+            Looks Good!
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label for="volumeCount" class="form-label">Volume Count:*</label>
+          <input class="form-control" type="number" name="volumeCount" id="volumeCount" value="<%= manga.volumeCount %>" min="1" max="300"required="true">
+          <div class="valid-feedback">
+            Looks Good!
+          </div>
+        </div>        
       </div>
-      <div class="col-sm-6 btn-group-vertical btn-group-sm" role="group" aria-label="Basic checkbox toggle button group">
-        <div class="col-12">
-        <legend>Theme: (Select all that apply)*</legend>
-          <% for (let i = 0; i < theme.length; i++) { %>
-            <input type="checkbox" class="btn-check" id="<%= theme[i] %>" name="theme" value="<%= theme[i] %>">
-            <label class="btn btn-outline-primary btnList mb-2" for="<%= theme[i] %>"><%= theme[i] %></label>
-          <% } %>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <label for="authorStory" class="form-label mt-3">Mangaka(Author/Artist)*</label>
+          <input class="form-control" type="text" name="authorStory" id="authorStory" value="<%= manga.authorStory %>" required="true">
+          <div class="valid-feedback">
+            Looks Good!
+          </div>
+        </div>
+        <div class="col-md-3">
+          <label for="authorArtist" class="form-label mt-3">Mangaka(Artist if apply)</label>
+          <input class="form-control" type="text" name="authorArtist" id="authorArtist" value="<%= manga.authorArtist %>">
+        </div>
+        <div class="col-md-3">
+          <label for="releaseDate" class="form-label mt-3">Manga Released*</label>
+          <input class="form-control" type="text" name="releaseDate" id="releaseDate" value="<%= manga.releaseDate %>" required="true">
+          <div class="valid-feedback">
+            Looks Good!
+          </div>
+        </div>
+        <div class="col-md-3">
+          <label for="finishedDate" class="form-label mt-2">Manga Finished(If apply)</label>
+          <input class="form-control" type="text" name="finishedDate" id="finishedDate" value="<%= manga.finishedDate %>">
         </div>
       </div>
     </div>
-  </div> 
-  <div id="btnSubmit" class="text-center">
-    <button class="btn btn-outline-success">Update</button>
-    <a class="btn btn-outline-danger" href="/mangas">Cancel</a>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <label for="description" class="form-label mt-2">Description*</label>
+          <textarea class="form-control" name="description" id="description" rows="7"
+          ><%= manga.description %></textarea>
+          <div class="valid-feedback">
+            Looks Good!
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <label for="img" class="form-label mt-2">Image Link*</label>
+        <input class="form-control" type="text" name="img" id="img" placeholder="<%= manga.img %>" required="true">
+        <div class="valid-feedback">
+          Looks Good!
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row g-3 align-items-start">
+        <div class="col-sm-6 btn-group-vertical btn-group-sm" role="group" aria-label="Basic checkbox toggle button group">
+          <div class="col-12">
+          <legend class="mb-2">Genre: (Select all that apply)*</legend>
+            <% for (let i = 0; i < genre.length; i++) { %>
+              <input type="checkbox" class="btn-check" id="<%= genre[i] %>" name="genre" value="<%= genre[i] %>">
+              <label class="btn btn-outline-primary btnList mb-2" for="<%= genre[i] %>"><%= genre[i] %></label>
+            <% } %>
+          <legend class="mb-2">Demographic: (Select all that apply)*</legend>
+            <% for (let i = 0; i < demographic.length; i++) { %>
+              <input type="checkbox" class="btn-check" id="<%= demographic[i] %>" name="demographic" value="<%= demographic[i] %>">
+              <label class="btn btn-outline-primary btnList mb-2" for="<%= demographic[i] %>"><%= demographic[i] %></label>
+            <% } %>
+          <legend>Is the series finished?*</legend><br>
+            <input type="radio" class="btn-check" name="completion" id="btnradio2" value="false" autocomplete="off" checked>
+            <label class="btn btn-outline-danger btn-lg" for="btnradio2">No</label>
+    
+            <input type="radio" class="btn-check" name="completion" id="btnradio1" value="true" autocomplete="off">
+            <label class="btn btn-outline-success btn-lg" for="btnradio1">Yes</label>
+          </div>
+        </div>
+        <div class="col-sm-6 btn-group-vertical btn-group-sm" role="group" aria-label="Basic checkbox toggle button group">
+          <div class="col-12">
+          <legend>Theme: (Select all that apply)*</legend>
+            <% for (let i = 0; i < theme.length; i++) { %>
+              <input type="checkbox" class="btn-check" id="<%= theme[i] %>" name="theme" value="<%= theme[i] %>">
+              <label class="btn btn-outline-primary btnList mb-2" for="<%= theme[i] %>"><%= theme[i] %></label>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div> 
+    <div id="btnSubmit" class="text-center">
+      <button class="btn btn-outline-success">Update</button>
+      <a class="btn btn-outline-danger" href="/mangas">Cancel</a>
+    </div>
+  </form>
   </div>
-</form>
-</div>
-<%- include('../partials/footer'); %>

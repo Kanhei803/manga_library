@@ -13,7 +13,7 @@ const mangaData = require('./models/mangaDB.json');
 const UserModel = require('./models/userSchema');
 
 // IMPORT JAVASCRIPT
-const AppError = require('./js/appError');
+const catchAsync = require('./utils/catchAsync')
 
 // PORT NUMBER
 const PORT = 8080;
@@ -126,69 +126,58 @@ app.get('/signup', (req,res) => {
 
 // @route POST /singup
 // desc: Adding a user into the DB
-app.post('/signup', async (req, res) => {
+app.post('/signup', catchAsync(async (req, res, next) => {
     const NewUser = new UserModel(req.body)
     await NewUser.save()
-    .then(() => {
-        console.log("User as been saved into DB!");
-    })
-    .catch((err) => {
-        console.log(err);
-    })
     res.send("It worked?")
-});
+}));
 
 // @route GET /mangas
 // desc: Rendering all manga page
-app.get('/mangas', async (req,res) => {
+app.get('/mangas', catchAsync(async (req, res, next) => {
     const titles = await MangaModel.find().sort({englishTitle: 1})
     res.render('mangas/index', { titles })
-});
+}));
 
 // POST NEW MANGA INTO DB
 // desc: Adding new manga into DB
-app.post('/mangasNew', upload.single('file'), async (req, res) => {
+app.post('/mangasNew', catchAsync(async (req, res, next) => {
     const SaveManga = new MangaModel(req.body)
-    await SaveManga.save() 
-    .then(() => {
-        console.log("It worked!");
-    }) 
-    .catch((err) => {
-        console.log(err)
-    })
+    await SaveManga.save()
     res.redirect('mangas')
-});
+}));
 
 // @route GET new page
-// desc: Page of adding new manga to DB
-app.get('/mangas/new', async (req, res) => {
+// desc: Page of adding new manga
+app.get('/mangas/new', catchAsync(async (req, res, next) => {
     const { id } = req.params;
     const manga = await MangaModel.findById(id);
     res.render('mangas/new', { manga, genre, theme, demographic })
-});
+}));
 
 // @route GET edit page
 // desc: Page of editing manga
-app.get('/mangas/:id/edit', async (req, res) => {
+app.get('/mangas/:id/edit', catchAsync(async (req, res, next) => {
     const { id } = req.params;
     const manga = await MangaModel.findById(id);
     res.render('mangas/edit', { manga, genre, theme, demographic })
-});
+}));
 
 // @route /mangas/:id
 // desc: Edit info in specific manga.
-app.put('/mangas/:id', async (req, res) => {
+app.put('/mangas/:id', catchAsync(async (req, res, next) => {
     const { id } = req.params;
     const manga = await MangaModel.findByIdAndUpdate(id, { ...req.body.manga });
     res.redirect('mangas', {manga, genre, theme, demographic})
-});
+}));
 
-// SPECIFIC MANGA PAGE
-app.get('/mangas/:id', async (req, res) => {
+// @route GET specific manga page
+// desc: Search and open the manga page
+app.get('/mangas/:id', catchAsync(async (req, res, next) => {
     const { id } = req.params;
     const manga = await MangaModel.findById(id)
     res.render('mangas/show', { manga })
-});
+}));
 
 // @route GET /inserted
 // @desc refill DB with entires using json file
@@ -208,8 +197,7 @@ app.get('/inserted', async (req, res) => {
 // @route USE
 // Error status if not found 
 app.use((err, req, res, next) => {
-    const { status = 500, message = 'Something Went Wrong'} = err;
-    res.status(status).send(message)
+    res.send('Oh boy, something went wrong!')
 })
 
 // PORT LISTEN
